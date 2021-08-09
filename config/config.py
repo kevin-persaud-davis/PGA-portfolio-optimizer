@@ -15,8 +15,3 @@ DATA_DIR = Path(PGA_DIR, "data")
 PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
 RAW_DATA_DIR = Path(DATA_DIR, "raw")
 
-
-
-if __name__ == "__main__":
-    print(BASE_DIR)
-    print(RAW_DATA_DIR)
