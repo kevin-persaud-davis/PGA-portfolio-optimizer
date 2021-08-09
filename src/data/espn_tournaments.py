@@ -11,14 +11,6 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# BASE_DIR = Path.home()
-# ML_DIR = Path(BASE_DIR, "machine_learning")
-# PROJECT_DIR = Path(ML_DIR, "projects")
-# DATA_DIR = Path(PROJECT_DIR, "data")
-
-# PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
-# RAW_DATA_DIR = Path(DATA_DIR, "raw")
-
 
 def tournament_name(tourn_meta):
     """Find tournament name
@@ -130,9 +122,8 @@ def players_purse(t_body):
     purse_size = 0
     players = t_body.find_all("tr", class_="Table__TR Table__even")
     if players is not None:
-        # Testing player first
+        
         for player in players:
-
             p_results = player.find_all("td", class_="Table__TD")
             # winnings entry
             p_winnings = p_results[-2].text
