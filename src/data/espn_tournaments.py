@@ -376,7 +376,7 @@ if __name__ == "__main__":
 
     valid_tournaments_df = filter_valid_tournaments(df)
 
-    valid_tournaments_path = str(Path(config.RAW_DATA_DIR, "valid_tournaments_2017_2020.csv"))
+    valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
 
     valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
     
