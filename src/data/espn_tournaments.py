@@ -348,9 +348,36 @@ def espn_schedule_runner():
 
     df.to_csv(file_path, index=False)
 
+def filter_valid_tournaments(df):
+    """Filter for valid tournaments
+
+    Notes:
+        Excluding Tour championship for 2019 and 2020
+        due to rule change in score totals.
+
+    Args:
+        df (pd.DataFrame) : espn tournaments
+
+    Returns:
+        valid_df (pd.Dataframe) : valid espn tournaments
+
+    """
+    valid_df = df[~df.winner_name.isnull()].copy()
+    valid_df = valid_df[~(valid_df["tournament_id"] == 401056542) | (valid_df["tournament_id"] == 401155476)]
+
+    return valid_df
+
 
 if __name__ == "__main__":
     
-    espn_schedule_runner()
+    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
+    
+    df = pd.read_csv(espn_tournaments_path, date_parser=["date"])
+
+    valid_tournaments_df = filter_valid_tournaments(df)
+
+    valid_tournaments_path = str(Path(config.RAW_DATA_DIR, "valid_tournaments_2017_2020.csv"))
+
+    valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
     
     
