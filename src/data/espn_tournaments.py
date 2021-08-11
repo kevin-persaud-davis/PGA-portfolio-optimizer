@@ -322,8 +322,9 @@ def espn_season_schedule(season_url):
         return tournament_data
 
 def espn_schedule_runner():
-    """
-    Run schedule runner over range of pga seasons
+    """Run schedule runner over range of pga seasons
+       from espn and save data.
+       
     """
     # Imporvement -> Ask from cmdline for season range
     pga_season_urls = [
