@@ -15,3 +15,5 @@ DATA_DIR = Path(PGA_DIR, "data")
 PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
 RAW_DATA_DIR = Path(DATA_DIR, "raw")
 
+TOURNAMENTS_DIR = Path(PROCESSED_DATA_DIR, "tournaments")
+
