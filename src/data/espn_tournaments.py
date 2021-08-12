@@ -364,7 +364,7 @@ def filter_valid_tournaments(df):
 
     """
     valid_df = df[~df.winner_name.isnull()].copy()
-    valid_df = valid_df[~(valid_df["tournament_id"] == 401056542) | (valid_df["tournament_id"] == 401155476)]
+    valid_df = valid_df[~((valid_df["tournament_id"] == 401056542) | (valid_df["tournament_id"] == 401155476))]
 
     return valid_df
 
