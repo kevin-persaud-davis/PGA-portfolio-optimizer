@@ -1,178 +1,178 @@
-tournament_id,tournament_name
-t060,TOUR Championship
-t028,BMW Championship
-t505,Dell Technologies Championship
-t027,THE NORTHERN TRUST
-t013,Wyndham Championship
-t033,PGA Championship
-t476,World Golf Championships-Bridgestone Invitational
-t472,Barracuda Championship
-t032,RBC Canadian Open
-t100,The Open Championship
-t518,Barbasol Championship
-t030,John Deere Classic
-t490,The Greenbrier Classic
-t471,Quicken Loans National
-t034,Travelers Championship
-t026,U.S. Open
-t025,FedEx St. Jude Classic
-t023,the Memorial Tournament presented by Nationwide
-t021,DEAN & DELUCA Invitational
-t019,AT&T Byron Nelson
-t011,THE PLAYERS Championship
-t480,Wells Fargo Championship
-t018,Zurich Classic of New Orleans
-t041,Valero Texas Open
-t012,RBC Heritage
-t014,Masters Tournament
-t020,Shell Houston Open
-t470,World Golf Championships-Dell Technologies Match Play
-t483,Puerto Rico Open
-t009,Arnold Palmer Invitational presented by Mastercard
-t475,Valspar Championship
-t473,World Golf Championships-Mexico Championship
-t010,The Honda Classic
-t007,Genesis Open
-t005,AT&T Pebble Beach Pro-Am
-t003,Waste Management Phoenix Open
-t004,Farmers Insurance Open
-t002,CareerBuilder Challenge
-t006,Sony Open in Hawaii
-t016,SBS Tournament of Champions
-t493,The RSM Classic
-t457,OHL Classic at Mayakoba
-t047,Shriners Hospitals for Children Open
-t489,World Golf Championships-HSBC Champions
-t054,Sanderson Farms Championship
-t494,CIMB Classic
-t464,Safeway Open
-t060,TOUR Championship
-t028,BMW Championship
-t505,Dell Technologies Championship
-t027,THE NORTHERN TRUST
-t013,Wyndham Championship
-t033,PGA Championship
-t476,World Golf Championships-Bridgestone Invitational
-t472,Barracuda Championship
-t032,RBC Canadian Open
-t100,The Open Championship
-t518,Barbasol Championship
-t030,John Deere Classic
-t490,A Military Tribute at The Greenbrier
-t471,Quicken Loans National
-t034,Travelers Championship
-t026,U.S. Open
-t025,FedEx St. Jude Classic
-t023,the Memorial Tournament presented by Nationwide
-t021,Fort Worth Invitational
-t019,AT&T Byron Nelson
-t011,THE PLAYERS Championship
-t480,Wells Fargo Championship
-t018,Zurich Classic of New Orleans
-t041,Valero Texas Open
-t012,RBC Heritage
-t014,Masters Tournament
-t020,Houston Open
-t470,World Golf Championships-Dell Technologies Match Play
-t522,Corales Puntacana Resort & Club Championship
-t009,Arnold Palmer Invitational presented by Mastercard
-t475,Valspar Championship
-t473,World Golf Championships-Mexico Championship
-t010,The Honda Classic
-t007,Genesis Open
-t005,AT&T Pebble Beach Pro-Am
-t003,Waste Management Phoenix Open
-t004,Farmers Insurance Open
-t002,CareerBuilder Challenge
-t006,Sony Open in Hawaii
-t016,Sentry Tournament of Champions
-t493,The RSM Classic
-t457,OHL Classic at Mayakoba
-t047,Shriners Hospitals for Children Open
-t489,World Golf Championships-HSBC Champions
-t054,Sanderson Farms Championship
-t521,THE CJ CUP @ NINE BRIDGES
-t494,CIMB Classic
-t464,Safeway Open
-t060,TOUR Championship
-t028,BMW Championship
-t027,THE NORTHERN TRUST
-t013,Wyndham Championship
-t472,Barracuda Championship
-t476,World Golf Championships-FedEx St. Jude Invitational
-t100,The Open Championship
-t518,Barbasol Championship
-t030,John Deere Classic
-t525,3M Open
-t524,Rocket Mortgage Classic
-t034,Travelers Championship
-t026,U.S. Open
-t032,RBC Canadian Open
-t023,the Memorial Tournament presented by Nationwide
-t021,Charles Schwab Challenge
-t033,PGA Championship
-t019,AT&T Byron Nelson
-t480,Wells Fargo Championship
-t018,Zurich Classic of New Orleans
-t012,RBC Heritage
-t014,Masters Tournament
-t041,Valero Texas Open
-t470,World Golf Championships-Dell Technologies Match Play
-t522,Corales Puntacana Resort & Club Championship
-t475,Valspar Championship
-t011,THE PLAYERS Championship
-t009,Arnold Palmer Invitational presented by Mastercard
-t010,The Honda Classic
-t473,World Golf Championships-Mexico Championship
-t483,Puerto Rico Open
-t007,Genesis Open
-t005,AT&T Pebble Beach Pro-Am
-t003,Waste Management Phoenix Open
-t004,Farmers Insurance Open
-t002,Desert Classic
-t006,Sony Open in Hawaii
-t016,Sentry Tournament of Champions
-t493,The RSM Classic
-t457,Mayakoba Golf Classic
-t047,Shriners Hospitals for Children Open
-t489,World Golf Championships-HSBC Champions
-t054,Sanderson Farms Championship
-t521,THE CJ CUP @ NINE BRIDGES
-t494,CIMB Classic
-t464,Safeway Open
-t060,TOUR Championship
-t028,BMW Championship
-t027,THE NORTHERN TRUST
-t013,Wyndham Championship
-t033,PGA Championship
-t476,World Golf Championships-FedEx St. Jude Invitational
-t472,Barracuda Championship
-t525,3M Open
-t023,the Memorial Tournament presented by Nationwide
-t533,Workday Charity Open
-t524,Rocket Mortgage Classic
-t034,Travelers Championship
-t012,RBC Heritage
-t021,Charles Schwab Challenge
-t009,Arnold Palmer Invitational presented by Mastercard
-t010,The Honda Classic
-t473,World Golf Championships-Mexico Championship
-t483,Puerto Rico Open
-t007,The Genesis Invitational
-t005,AT&T Pebble Beach Pro-Am
-t003,Waste Management Phoenix Open
-t004,Farmers Insurance Open
-t002,The American Express
-t006,Sony Open in Hawaii
-t016,Sentry Tournament of Champions
-t493,The RSM Classic
-t457,Mayakoba Golf Classic
-t489,World Golf Championships-HSBC Champions
-t528,Bermuda Championship
-t527,ZOZO CHAMPIONSHIP
-t521,THE CJ CUP @ NINE BRIDGES
-t020,Houston Open
-t047,Shriners Hospitals for Children Open
-t464,Safeway Open
-t054,Sanderson Farms Championship
-t490,A Military Tribute at The Greenbrier
+tournament_id,tournament_name,season
+t060,TOUR Championship,2017
+t028,BMW Championship,2017
+t505,Dell Technologies Championship,2017
+t027,THE NORTHERN TRUST,2017
+t013,Wyndham Championship,2017
+t033,PGA Championship,2017
+t476,World Golf Championships-Bridgestone Invitational,2017
+t472,Barracuda Championship,2017
+t032,RBC Canadian Open,2017
+t100,The Open Championship,2017
+t518,Barbasol Championship,2017
+t030,John Deere Classic,2017
+t490,The Greenbrier Classic,2017
+t471,Quicken Loans National,2017
+t034,Travelers Championship,2017
+t026,U.S. Open,2017
+t025,FedEx St. Jude Classic,2017
+t023,the Memorial Tournament presented by Nationwide,2017
+t021,DEAN & DELUCA Invitational,2017
+t019,AT&T Byron Nelson,2017
+t011,THE PLAYERS Championship,2017
+t480,Wells Fargo Championship,2017
+t018,Zurich Classic of New Orleans,2017
+t041,Valero Texas Open,2017
+t012,RBC Heritage,2017
+t014,Masters Tournament,2017
+t020,Shell Houston Open,2017
+t470,World Golf Championships-Dell Technologies Match Play,2017
+t483,Puerto Rico Open,2017
+t009,Arnold Palmer Invitational presented by Mastercard,2017
+t475,Valspar Championship,2017
+t473,World Golf Championships-Mexico Championship,2017
+t010,The Honda Classic,2017
+t007,Genesis Open,2017
+t005,AT&T Pebble Beach Pro-Am,2017
+t003,Waste Management Phoenix Open,2017
+t004,Farmers Insurance Open,2017
+t002,CareerBuilder Challenge,2017
+t006,Sony Open in Hawaii,2017
+t016,SBS Tournament of Champions,2017
+t493,The RSM Classic,2017
+t457,OHL Classic at Mayakoba,2017
+t047,Shriners Hospitals for Children Open,2017
+t489,World Golf Championships-HSBC Champions,2017
+t054,Sanderson Farms Championship,2017
+t494,CIMB Classic,2017
+t464,Safeway Open,2017
+t060,TOUR Championship,2018
+t028,BMW Championship,2018
+t505,Dell Technologies Championship,2018
+t027,THE NORTHERN TRUST,2018
+t013,Wyndham Championship,2018
+t033,PGA Championship,2018
+t476,World Golf Championships-Bridgestone Invitational,2018
+t472,Barracuda Championship,2018
+t032,RBC Canadian Open,2018
+t100,The Open Championship,2018
+t518,Barbasol Championship,2018
+t030,John Deere Classic,2018
+t490,A Military Tribute at The Greenbrier,2018
+t471,Quicken Loans National,2018
+t034,Travelers Championship,2018
+t026,U.S. Open,2018
+t025,FedEx St. Jude Classic,2018
+t023,the Memorial Tournament presented by Nationwide,2018
+t021,Fort Worth Invitational,2018
+t019,AT&T Byron Nelson,2018
+t011,THE PLAYERS Championship,2018
+t480,Wells Fargo Championship,2018
+t018,Zurich Classic of New Orleans,2018
+t041,Valero Texas Open,2018
+t012,RBC Heritage,2018
+t014,Masters Tournament,2018
+t020,Houston Open,2018
+t470,World Golf Championships-Dell Technologies Match Play,2018
+t522,Corales Puntacana Resort & Club Championship,2018
+t009,Arnold Palmer Invitational presented by Mastercard,2018
+t475,Valspar Championship,2018
+t473,World Golf Championships-Mexico Championship,2018
+t010,The Honda Classic,2018
+t007,Genesis Open,2018
+t005,AT&T Pebble Beach Pro-Am,2018
+t003,Waste Management Phoenix Open,2018
+t004,Farmers Insurance Open,2018
+t002,CareerBuilder Challenge,2018
+t006,Sony Open in Hawaii,2018
+t016,Sentry Tournament of Champions,2018
+t493,The RSM Classic,2018
+t457,OHL Classic at Mayakoba,2018
+t047,Shriners Hospitals for Children Open,2018
+t489,World Golf Championships-HSBC Champions,2018
+t054,Sanderson Farms Championship,2018
+t521,THE CJ CUP @ NINE BRIDGES,2018
+t494,CIMB Classic,2018
+t464,Safeway Open,2018
+t060,TOUR Championship,2019
+t028,BMW Championship,2019
+t027,THE NORTHERN TRUST,2019
+t013,Wyndham Championship,2019
+t472,Barracuda Championship,2019
+t476,World Golf Championships-FedEx St. Jude Invitational,2019
+t100,The Open Championship,2019
+t518,Barbasol Championship,2019
+t030,John Deere Classic,2019
+t525,3M Open,2019
+t524,Rocket Mortgage Classic,2019
+t034,Travelers Championship,2019
+t026,U.S. Open,2019
+t032,RBC Canadian Open,2019
+t023,the Memorial Tournament presented by Nationwide,2019
+t021,Charles Schwab Challenge,2019
+t033,PGA Championship,2019
+t019,AT&T Byron Nelson,2019
+t480,Wells Fargo Championship,2019
+t018,Zurich Classic of New Orleans,2019
+t012,RBC Heritage,2019
+t014,Masters Tournament,2019
+t041,Valero Texas Open,2019
+t470,World Golf Championships-Dell Technologies Match Play,2019
+t522,Corales Puntacana Resort & Club Championship,2019
+t475,Valspar Championship,2019
+t011,THE PLAYERS Championship,2019
+t009,Arnold Palmer Invitational presented by Mastercard,2019
+t010,The Honda Classic,2019
+t473,World Golf Championships-Mexico Championship,2019
+t483,Puerto Rico Open,2019
+t007,Genesis Open,2019
+t005,AT&T Pebble Beach Pro-Am,2019
+t003,Waste Management Phoenix Open,2019
+t004,Farmers Insurance Open,2019
+t002,Desert Classic,2019
+t006,Sony Open in Hawaii,2019
+t016,Sentry Tournament of Champions,2019
+t493,The RSM Classic,2019
+t457,Mayakoba Golf Classic,2019
+t047,Shriners Hospitals for Children Open,2019
+t489,World Golf Championships-HSBC Champions,2019
+t054,Sanderson Farms Championship,2019
+t521,THE CJ CUP @ NINE BRIDGES,2019
+t494,CIMB Classic,2019
+t464,Safeway Open,2019
+t060,TOUR Championship,2020
+t028,BMW Championship,2020
+t027,THE NORTHERN TRUST,2020
+t013,Wyndham Championship,2020
+t033,PGA Championship,2020
+t476,World Golf Championships-FedEx St. Jude Invitational,2020
+t472,Barracuda Championship,2020
+t525,3M Open,2020
+t023,the Memorial Tournament presented by Nationwide,2020
+t533,Workday Charity Open,2020
+t524,Rocket Mortgage Classic,2020
+t034,Travelers Championship,2020
+t012,RBC Heritage,2020
+t021,Charles Schwab Challenge,2020
+t009,Arnold Palmer Invitational presented by Mastercard,2020
+t010,The Honda Classic,2020
+t473,World Golf Championships-Mexico Championship,2020
+t483,Puerto Rico Open,2020
+t007,The Genesis Invitational,2020
+t005,AT&T Pebble Beach Pro-Am,2020
+t003,Waste Management Phoenix Open,2020
+t004,Farmers Insurance Open,2020
+t002,The American Express,2020
+t006,Sony Open in Hawaii,2020
+t016,Sentry Tournament of Champions,2020
+t493,The RSM Classic,2020
+t457,Mayakoba Golf Classic,2020
+t489,World Golf Championships-HSBC Champions,2020
+t528,Bermuda Championship,2020
+t527,ZOZO CHAMPIONSHIP,2020
+t521,THE CJ CUP @ NINE BRIDGES,2020
+t020,Houston Open,2020
+t047,Shriners Hospitals for Children Open,2020
+t464,Safeway Open,2020
+t054,Sanderson Farms Championship,2020
+t490,A Military Tribute at The Greenbrier,2020
