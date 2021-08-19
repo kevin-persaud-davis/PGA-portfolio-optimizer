@@ -215,7 +215,7 @@ def winning_score(t_body):
                 return total
     
 
-def tournament_information(url):
+def tournament_information(url, s_id):
     """Gets tournament meta information including the following,
         
         tournament meta = {
@@ -225,7 +225,8 @@ def tournament_information(url):
             purse,
             winning score,
             winner name,
-            winner id
+            winner id,
+            season id
         }
 
     Args:
@@ -279,6 +280,8 @@ def tournament_information(url):
         t_win_id = tournament_winner_id(tourn_body)
         tourn_info["winner_id"] = t_win_id
 
+        tourn_info["season_id"] = s_id
+
         return tourn_info
     else:
         print(f"No div.ResponsiveTable, (Tournament {t_id} Cancelled)")
@@ -287,6 +290,8 @@ def tournament_information(url):
         tourn_info["tournament_size"] = None
         tourn_info["winner_name"] = None
         tourn_info["winner_id"] = None
+        tourn_info["season_id"] = s_id
+
         return tourn_info
 
 def espn_season_schedule(season_url):
@@ -316,7 +321,9 @@ def espn_season_schedule(season_url):
             if tournament_url:    
                 t_url = tournament_url["href"]
                 print(f"Fetching {t_url} data")
-                t_data = tournament_information(t_url)
+
+                season_id = season_url[season_url.rfind("/")+1 :]
+                t_data = tournament_information(t_url, season_id)
                 tournament_data.append(t_data)
 
         return tournament_data
@@ -371,14 +378,15 @@ def filter_valid_tournaments(df):
 
 if __name__ == "__main__":
     
-    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
+    espn_schedule_runner()
+    # espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
     
-    df = pd.read_csv(espn_tournaments_path, date_parser=["date"])
+    # df = pd.read_csv(espn_tournaments_path, date_parser=["date"])
 
-    valid_tournaments_df = filter_valid_tournaments(df)
+    # valid_tournaments_df = filter_valid_tournaments(df)
 
-    valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
+    # valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
 
-    valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
+    # valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
     
     
