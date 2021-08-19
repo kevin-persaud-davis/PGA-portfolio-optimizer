@@ -378,15 +378,15 @@ def filter_valid_tournaments(df):
 
 if __name__ == "__main__":
     
-    espn_schedule_runner()
-    # espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
     
-    # df = pd.read_csv(espn_tournaments_path, date_parser=["date"])
+    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
+    
+    df = pd.read_csv(espn_tournaments_path, date_parser=["date"])
 
-    # valid_tournaments_df = filter_valid_tournaments(df)
+    valid_tournaments_df = filter_valid_tournaments(df)
 
-    # valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
+    valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
 
-    # valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
+    valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
     
     
