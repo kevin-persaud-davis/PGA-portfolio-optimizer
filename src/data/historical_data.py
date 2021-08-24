@@ -907,7 +907,7 @@ def write_tournament_data(tournament_url):
     # Create unique file path from tournament id
     t_id = tournament_url[tournament_url.rfind("=")+1:]
     fn = t_id + ".csv"
-    f_path = str(Path(config.RAW_HISTORICAL_DIR, fn))
+    f_path = str(Path(config.RAW_DATA_DIR, fn))
     # fn = f_path + t_id + ".csv"
 
     with open (f_path, "w", newline="") as csvfile:
