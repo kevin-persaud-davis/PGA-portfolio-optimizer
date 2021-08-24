@@ -969,7 +969,38 @@ def historical_data_runner(start, end=None):
             print(result)
 
 
-        
+def st_historical_data_runner(start, end=None):
+    """Get historical data over given pga season(s) from espn through
+    a single thread process.
+
+    Note:
+    Process writes each tournament to disk as a csv file using the
+    tournament id as a unique identifier.
+    
+    Args:
+        start (int) : beginning pga season
+
+        end (int) : ending pga season, optional arg
+    
+    """
+    if end is not None:
+
+        tournaments_df = get_espn_tournaments(start, end)
+
+    else:
+
+        tournaments_df = get_espn_tournaments(start)
+
+
+    base_url = "https://www.espn.com/golf/leaderboard?tournamentId="
+
+    tournaments_df["url"] = tournaments_df["tournament_id"].apply(lambda x: base_url + str(x))
+
+    urls = tournaments_df["url"].tolist()
+
+    results = [write_tournament_data(url) for url in urls]
+    
+    print(results)
 
 
 if __name__ == "__main__":
