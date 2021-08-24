@@ -12,8 +12,11 @@ LOGS_DIR = Path(PGA_DIR, "logging")
 MODEL_DIR = Path(PGA_DIR, "model")
 DATA_DIR = Path(PGA_DIR, "data")
 
-PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
+
 RAW_DATA_DIR = Path(DATA_DIR, "raw")
+RAW_HISTORICAL_DIR = Path(RAW_DATA_DIR, "historical_player_data")
+
+PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
 
 TOURNAMENTS_DIR = Path(PROCESSED_DATA_DIR, "tournaments")
 
