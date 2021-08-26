@@ -1,7 +1,5 @@
-
 from pathlib import Path
 import sys
-
 
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
 import config
@@ -984,6 +982,8 @@ def historical_data_runner(start, end=None):
 
         end (int) : ending pga season, optional arg
 
+    Returns:
+        missed tournaments from to many server requests and failed connections
     """
     if end is not None:
 
