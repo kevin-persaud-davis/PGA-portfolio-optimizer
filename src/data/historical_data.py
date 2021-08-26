@@ -1,4 +1,6 @@
-from pathlib import Path
+from pathlib import Path, PurePath
+import os
+from fnmatch import fnmatch
 import sys
 
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
@@ -12,6 +14,7 @@ from functools import wraps
 
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 import numpy as np
 
 def timeit(method):
@@ -1050,17 +1053,73 @@ def st_historical_data_runner(start, end=None):
     
     print(results)
 
+def tournament_date_col(df, tournament_df):
+    """Create date column through tournament id mapping
+
+    Parameters:
+        df (pd.Dataframe)
+        tournament_df (pd.Dataframe)
+    """
+    date_col = df["tournament_id"].apply(lambda x: tournament_df["date"][tournament_df["tournament_id"] == x].values[0])
+
+    idx = 2
+    df.insert(loc=idx, column="date", value=date_col)
+
+def combine_files(root, pattern=None):
+    """Combine all files in root path directory
+
+    Parameters:
+        root (str) : file path to directory of files
+        pattern (str) : optional file pattern to search for in directory
+
+    Returns:
+        combined files
+    """
+    if pattern is not None:
+        files = [PurePath(path, name) for path, subdirs, files in os.walk(root) for name in files if fnmatch(name, pattern)]
+        combined_files = pd.concat([pd.read_csv(f) for f in files])
+
+    else:
+        files = [PurePath(path, name) for path, subdirs, files in os.walk(root) for name in files]
+        combined_files = pd.concat([pd.read_csv(f) for f in files])
+
+    return combined_files
+
+def merge_tournaments(f_pattern, f_name):
+    """Merge espn tournmants
+    
+    Args:
+        f_pattern (str) : pattern criteria to match for files
+        
+        f_name (str) : file name for merged tournaments
+        
+    """
+    f_path = str(config.RAW_HISTORICAL_DIR)
+    historical_data = combine_files(f_path, f_pattern)
+
+    processed_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, f_name))
+
+    historical_data.to_csv(processed_data_path, index=False)
 
 
+def run_date_transformations():
+    """Run and save date transformations for historical player data
+    
+    """
+    f_path = str(config.RAW_HISTORICAL_DIR)
+    print(f_path)
+    # historical_data = pd.read_csv()
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2017, 2018)
+    merge_tournaments("*.csv", "hpd_2017_2020.csv")
+    
+    # tourn_errors = historical_data_runner(2017, 2018)
 
-    if tourn_errors:
-        for tourn in tourn_errors:
-            missed_result = write_tournament_data(tourn)
-            print(missed_result)
+    # if tourn_errors:
+    #     for tourn in tourn_errors:
+    #         missed_result = write_tournament_data(tourn)
+    #         print(missed_result)
     
 
     
