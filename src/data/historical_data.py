@@ -1102,17 +1102,25 @@ def merge_tournaments(f_pattern, f_name):
     historical_data.to_csv(processed_data_path, index=False)
 
 
-def run_date_transformations():
+def run_date_transformation():
     """Run and save date transformations for historical player data
     
     """
-    f_path = str(config.RAW_HISTORICAL_DIR)
-    print(f_path)
-    # historical_data = pd.read_csv()
+    f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
+    historical_data_df = pd.read_csv(f_path)
+
+    espn_tourn_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
+
+    espn_tourns_df = pd.read_csv(espn_tourn_path, parse_dates=["date"])
+
+    tournament_date_col(historical_data_df, espn_tourns_df)
+
+    historical_data_df.to_csv(f_path)
+
 
 if __name__ == "__main__":
 
-    merge_tournaments("*.csv", "hpd_2017_2020.csv")
+    run_date_transformation()
     
     # tourn_errors = historical_data_runner(2017, 2018)
 
