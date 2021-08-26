@@ -19,4 +19,4 @@ RAW_HISTORICAL_DIR = Path(RAW_DATA_DIR, "historical_player_data")
 PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
 
 TOURNAMENTS_DIR = Path(PROCESSED_DATA_DIR, "tournaments")
-
+PROCESSED_HISTORICAL_DIR = Path(PROCESSED_DATA_DIR, "historical_player_data")
