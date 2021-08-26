@@ -1,10 +1,6 @@
 
-import csv
-from multiprocessing.context import get_spawning_popen
 from pathlib import Path
 import sys
-
-from requests.models import Response
 
 
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
@@ -18,7 +14,6 @@ from functools import wraps
 
 from bs4 import BeautifulSoup
 import requests
-import pandas as pd
 import numpy as np
 
 def timeit(method):
