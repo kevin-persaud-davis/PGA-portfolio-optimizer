@@ -263,7 +263,7 @@ def fix_rbc_2019():
 
     """
     historical_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
-    player_df = pd.read_csv(historical_data_path, date_parser=["date"])
+    player_df = pd.read_csv(historical_data_path, parse_dates=["date"])
 
     missing_rbc = player_df[(player_df.round_4_1.isnull().values == False) & (player_df.tournament_id == 401056555)].copy()
     
