@@ -340,7 +340,7 @@ def fantasy_map_runner():
     """
     f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
     dk_fantasy_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
-    historical_data_df = pd.read_csv(f_path, date_parser=["date"])
+    historical_data_df = pd.read_csv(f_path, parse_dates=["date"])
 
     tournament_position_rank(historical_data_df)
 
