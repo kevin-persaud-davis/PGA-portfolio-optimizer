@@ -381,7 +381,7 @@ if __name__ == "__main__":
     
     espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
     
-    df = pd.read_csv(espn_tournaments_path, date_parser=["date"])
+    df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
 
     valid_tournaments_df = filter_valid_tournaments(df)
 
