@@ -20,3 +20,4 @@ PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
 
 TOURNAMENTS_DIR = Path(PROCESSED_DATA_DIR, "tournaments")
 PROCESSED_HISTORICAL_DIR = Path(PROCESSED_DATA_DIR, "historical_player_data")
+FEATURES_DIR = Path(PROCESSED_DATA_DIR, "feature_engineered_data")
