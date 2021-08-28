@@ -89,8 +89,6 @@ if __name__ == "__main__":
     dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
     df = pd.read_csv(dk_data_path, parse_dates=["date"])
 
-    # sub_df = df[["player_id", "tournament_id", "place", "date"]].copy()
-
     for i in range(1, 51, 2):
         sub_df = df[["player_id", "tournament_id", "place", "date"]].copy()
         if i == 1:
@@ -103,17 +101,7 @@ if __name__ == "__main__":
 
             df[f"last_top_{i}"] = place_date_df[f"last_top_{i}"]
             df[f"days_since_top_{i}"] = place_date_df[f"days_since_top_{i}"]
-            
-    # win_dates_df = last_win(sub_df)
     
-    # df["last_win"] = win_dates_df["last_win"]
-    # df["days_since_win"] = win_dates_df["days_since_win"]
-
-
-    # top_5_df = placed_top_N(sub_df, 5)
-
-    # df["last_top_5"] = top_5_df["last_top_5"]
-    # df["days_since_top_5"] = top_5_df["days_since_top_5"]
 
     features_data_path = str(Path(config.FEATURES_DIR, "features_hpd_2017_2020.csv"))
     df.to_csv(features_data_path, index=False)
