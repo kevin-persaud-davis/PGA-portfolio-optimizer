@@ -84,10 +84,13 @@ def last_win(df):
     
     return n_df
 
-if __name__ == "__main__":
+def run_placing_features(df, fname=None):
+    """Create placing features from 1st to 50th by 2 place increments
     
-    dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
-    df = pd.read_csv(dk_data_path, parse_dates=["date"])
+    Args:
+        df (pd.Dataframe) : draftkings historical player data
+    
+    """
 
     for i in range(1, 51, 2):
         sub_df = df[["player_id", "tournament_id", "place", "date"]].copy()
@@ -101,7 +104,15 @@ if __name__ == "__main__":
 
             df[f"last_top_{i}"] = place_date_df[f"last_top_{i}"]
             df[f"days_since_top_{i}"] = place_date_df[f"days_since_top_{i}"]
-    
 
-    features_data_path = str(Path(config.FEATURES_DIR, "features_hpd_2017_2020.csv"))
-    df.to_csv(features_data_path, index=False)
+    if fname is not None:
+    
+        features_data_path = str(Path(config.FEATURES_DIR, fname))
+        df.to_csv(features_data_path, index=False)
+        
+
+
+if __name__ == "__main__":
+    
+    dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
+    df = pd.read_csv(dk_data_path, parse_dates=["date"])
