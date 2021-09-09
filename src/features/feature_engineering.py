@@ -108,14 +108,7 @@ def run_placing_features(df, feat_dir=None, fname=None):
 
             df[f"last_top_{i}"] = place_date_df[f"last_top_{i}"]
             df[f"days_since_top_{i}"] = place_date_df[f"days_since_top_{i}"]
-
-    # if feat_dir.lower() == "timeseries":
-
-    # if fname is not None:
     
-    #     features_data_path = str(Path(config.FEATURES_DIR, fname))
-    #     df.to_csv(features_data_path, index=False)
-        
 
 
 if __name__ == "__main__":
