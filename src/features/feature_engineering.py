@@ -1,3 +1,4 @@
+from os import times
 from pathlib import Path
 import sys
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
@@ -84,12 +85,15 @@ def last_win(df):
     
     return n_df
 
-def run_placing_features(df, fname=None):
+def run_placing_features(df, feat_dir=None, fname=None):
     """Create placing features from 1st to 50th by 2 place increments
     
     Args:
         df (pd.Dataframe) : draftkings historical player data
-    
+
+        feat_dir (str) : features framework directory
+
+        fname (str) : file name
     """
 
     for i in range(1, 51, 2):
@@ -105,10 +109,12 @@ def run_placing_features(df, fname=None):
             df[f"last_top_{i}"] = place_date_df[f"last_top_{i}"]
             df[f"days_since_top_{i}"] = place_date_df[f"days_since_top_{i}"]
 
-    if fname is not None:
+    # if feat_dir.lower() == "timeseries":
+
+    # if fname is not None:
     
-        features_data_path = str(Path(config.FEATURES_DIR, fname))
-        df.to_csv(features_data_path, index=False)
+    #     features_data_path = str(Path(config.FEATURES_DIR, fname))
+    #     df.to_csv(features_data_path, index=False)
         
 
 
@@ -116,3 +122,14 @@ if __name__ == "__main__":
     
     dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
     df = pd.read_csv(dk_data_path, parse_dates=["date"])
+
+    iid_data_path = str(Path(config.IID_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
+    
+    df.to_csv(iid_data_path, index=False)
+
+    run_placing_features(df)
+
+    timeseries_data_path = str(Path(config.TIMESERIES_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
+    df.to_csv(timeseries_data_path, index=False)
+    
+
