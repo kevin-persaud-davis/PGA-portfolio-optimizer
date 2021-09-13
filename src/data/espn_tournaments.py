@@ -249,7 +249,7 @@ def tournament_information(url, s_id):
     tourn_meta = mt4[-1]
 
     t_id = url[url.rfind("=") + 1:]
-    tourn_info["tournament_id"] = t_id 
+    tourn_info["tournament_id"] = t_id
 
     t_name = tournament_name(tourn_meta)
     tourn_info["tournament_name"] = t_name
@@ -281,6 +281,14 @@ def tournament_information(url, s_id):
         tourn_info["winner_id"] = t_win_id
 
         tourn_info["season_id"] = s_id
+
+        
+        if t_id == "2277":
+            tourn_info["winner_name"] = "Scott Piercy"
+
+            tourn_info["winner_id"] = "1037"
+
+            tourn_info["win_total"] = "265"
 
         return tourn_info
     else:
@@ -356,6 +364,31 @@ def espn_schedule_runner():
 
     df.to_csv(file_path, index=False)
 
+def get_espn_schedule(start, end=None):
+    """
+    
+    """
+    b_url = "https://www.espn.com/golf/schedule/_/season/"
+    if end is not None:
+        pga_season_urls = [b_url + str(season) for season in range(start, end+1)]
+        file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}_{end}.csv"))
+
+    else:
+        pga_season_urls = [f"{b_url}{start}"]
+        file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}.csv"))
+
+    pga_tournament_data = [espn_season_schedule(pga_season) for pga_season in pga_season_urls]
+
+    # Flatten nested list of pga seasons
+    pga_tournament_data = list(itertools.chain.from_iterable(pga_tournament_data))
+    
+    df = pd.DataFrame(pga_tournament_data)
+    df["tournament_purse"] = pd.to_numeric(df["tournament_purse"], downcast="integer")
+    df["win_total"] = pd.to_numeric(df["win_total"], downcast="integer")
+    df["date"] = pd.to_datetime(df["date"])
+    
+    df.to_csv(file_path, index=False)
+
 def filter_valid_tournaments(df):
     """Filter for valid tournaments
 
@@ -423,14 +456,14 @@ def create_subset_tournaments(tourn_path, subset_path, valid_tourns=True):
 if __name__ == "__main__":
     
     
-    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
+    # espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
     
-    df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
+    # df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
 
-    valid_tournaments_df = filter_valid_tournaments(df)
+    # valid_tournaments_df = filter_valid_tournaments(df)
 
-    valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
+    # valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
 
-    valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
+    # valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
     
-    
+    get_espn_schedule(2011, 2016)
