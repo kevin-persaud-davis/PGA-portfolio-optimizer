@@ -392,6 +392,33 @@ def filter_tournaments(df):
     
     return filtered_df
 
+def create_subset_tournaments(tourn_path, subset_path, valid_tourns=True):
+    """Create subset of tournaments to save
+    
+    Args:
+        tourn_path (str) : espn tournaments file name
+
+        subset_path (str) : subset tournaments file name
+
+    """
+    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, tourn_path))
+    
+    df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
+
+    if valid_tourns == True:
+
+        subset_tournaments_df = filter_valid_tournaments(df)
+
+    else:
+
+        subset_tournaments_df = filter_tournaments(df)
+
+
+    subset_tournaments_path = str(Path(config.TOURNAMENTS_DIR, subset_path))
+
+    subset_tournaments_df.to_csv(subset_tournaments_path, index=False)
+
+
 
 if __name__ == "__main__":
     
