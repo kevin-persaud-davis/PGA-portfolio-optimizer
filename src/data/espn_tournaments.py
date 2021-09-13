@@ -375,6 +375,23 @@ def filter_valid_tournaments(df):
 
     return valid_df
 
+def filter_tournaments(df):
+    """Filter espn tournaments.
+    
+    Notes:
+        differs from filter_valid_tournaments by keeping the Tour Championship in the set.
+        The reason for the removal of that tournament is the rule changed that started in 2019
+        
+    Args:
+        df (pd.DataFrame): espn tournaments
+        
+    Returns:
+        filtered dataframe of espn tournaments    
+    """
+    filtered_df = df[~df.winner_name.isnull()].copy()
+    
+    return filtered_df
+
 
 if __name__ == "__main__":
     
