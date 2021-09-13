@@ -116,13 +116,13 @@ if __name__ == "__main__":
     dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
     df = pd.read_csv(dk_data_path, parse_dates=["date"])
 
-    iid_data_path = str(Path(config.IID_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
+    grouped_data_path = str(Path(config.GROUPED_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
     
-    df.to_csv(iid_data_path, index=False)
+    df.to_csv(grouped_data_path, index=False)
+    
+    # run_placing_features(df)
 
-    run_placing_features(df)
-
-    timeseries_data_path = str(Path(config.TIMESERIES_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
-    df.to_csv(timeseries_data_path, index=False)
+    # timeseries_data_path = str(Path(config.TIMESERIES_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
+    # df.to_csv(timeseries_data_path, index=False)
     
 
