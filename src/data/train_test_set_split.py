@@ -5,7 +5,7 @@ import config
 
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import TimeSeriesSplit
+from sklearn.model_selection import TimeSeriesSplit, GroupKFold
 
 
 def timeseries_split_dataset(df, t_gap=0, t_size=None):
@@ -31,6 +31,31 @@ def timeseries_split_dataset(df, t_gap=0, t_size=None):
         ts_test_set = df.loc[test_index]
 
     return ts_train_set, ts_test_set
+
+def group_kfold_split(df, group="player_id"):
+    """Split dataset using GroupKFold
+    
+    Args:
+        df (pd.Dataframe) : historical features dataset
+        
+        group (str) : non-overlapping group used. Default value player id
+    
+    Returns:
+        GroupKFold split of dataset based on given parameters
+    """
+    df.sort_values(by="date", inplace=True)
+    df.reset_index(drop=True, inplace=True)
+
+    group_kfold = GroupKFold()
+
+    grouping = df[group]
+
+    for train_index, test_index in group_kfold.split(df, group=grouping):
+        gkfold_train_set = df.loc[train_index]
+        gkfold_test_set = df.loc[test_index]
+
+    return gkfold_train_set, gkfold_test_set
+    
     
 
 
