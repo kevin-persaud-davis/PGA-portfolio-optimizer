@@ -20,6 +20,7 @@ RAW_PGA_METRICS_DIR = Path(RAW_DATA_DIR, "pgatour_metrics_data")
 PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
 
 TOURNAMENTS_DIR = Path(PROCESSED_DATA_DIR, "tournaments")
+MAPPED_TOURNAMENTS_DIR = Path(TOURNAMENTS_DIR, "mapped_tournaments")
 PROCESSED_HISTORICAL_DIR = Path(PROCESSED_DATA_DIR, "historical_player_data")
 
 FEATURES_DIR = Path(PROCESSED_DATA_DIR, "features_data")
