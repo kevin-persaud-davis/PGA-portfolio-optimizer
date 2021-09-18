@@ -467,7 +467,7 @@ def alter_tournament_names(df, fname=None):
         df.replace(f"{season} Masters Tournament", "Masters Tournament", inplace=True)
 
     wgc_tournaments = df[["tournament_name"]][df.tournament_name.str.contains("WGC-")]
-    wgc_tournaments.loc[:, "tournament_name"] = wgc_tournaments.tournament_name.apply(lambda x: x.replace("WGC-", "World Golf Championship-"))
+    wgc_tournaments.loc[:, "tournament_name"] = wgc_tournaments.tournament_name.apply(lambda x: x.replace("WGC-", "World Golf Championships-"))
     df.loc[wgc_tournaments.index, "tournament_name"] = wgc_tournaments
 
     df.replace("The Open", "The Open Championship", inplace=True)
