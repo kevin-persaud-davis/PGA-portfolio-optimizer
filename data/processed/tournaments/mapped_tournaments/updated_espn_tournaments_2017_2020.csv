@@ -1,0 +1,197 @@
+tournament_id,tournament_name,date,tournament_purse,win_total,tournament_size,winner_name,winner_id,season_id
+401148233,A Military Tribute at The Greenbrier,2019-09-12,7500000.0,259.0,156.0,Joaquin Niemann,11099.0,2020
+401148234,Sanderson Farms Championship,2019-09-19,6600000.0,270.0,156.0,Sebastián Muñoz,10404.0,2020
+401148235,Safeway Open,2019-09-26,6600000.0,271.0,144.0,Cameron Champ,11098.0,2020
+401148236,Shriners Hospitals for Children Open,2019-10-03,7000000.0,261.0,144.0,Kevin Na,318.0,2020
+401148237,Houston Open,2019-10-10,750000.0,274.0,144.0,Lanto Griffin,5962.0,2020
+401148238,THE CJ CUP @ NINE BRIDGES,2019-10-16,9750000.0,268.0,78.0,Justin Thomas,4848.0,2020
+401148239,The ZOZO CHAMPIONSHIP,2019-10-24,975000.0,261.0,78.0,Tiger Woods,462.0,2020
+401148240,Bermuda Championship,2019-10-31,300000.0,260.0,120.0,Brendon Todd,3454.0,2020
+401148241,World Golf Championship-HSBC CHAMPIONS,2019-10-31,10250000.0,269.0,78.0,Rory McIlroy,3470.0,2020
+401148242,Mayakoba Golf Classic,2019-11-14,7200000.0,264.0,132.0,Brendon Todd,3454.0,2020
+401148243,The RSM Classic,2019-11-21,6600000.0,263.0,156.0,Tyler Duncan,9569.0,2020
+401148244,Hero World Challenge,2019-12-04,3500000.0,270.0,18.0,Henrik Stenson,576.0,2020
+401148245,Presidents Cup,2019-12-11,,,0.0,,,2020
+401155413,Sentry Tournament of Champions,2020-01-02,6700000.0,278.0,34.0,Justin Thomas,4848.0,2020
+401155418,Sony Open in Hawaii,2020-01-09,6600000.0,269.0,144.0,Cameron Smith,9131.0,2020
+401155419,The American Express,2020-01-16,6700000.0,262.0,156.0,Andrew Landry,4682.0,2020
+401155420,Farmers Insurance Open,2020-01-23,7500000.0,273.0,156.0,Marc Leishman,3351.0,2020
+401155421,Waste Management Phoenix Open,2020-01-30,7300000.0,267.0,132.0,Webb Simpson,1614.0,2020
+401155422,AT&T Pebble Beach Pro-Am,2020-02-06,7800000.0,268.0,156.0,Nick Taylor,3792.0,2020
+401155423,The Genesis Invitational,2020-02-13,9300000.0,273.0,120.0,Adam Scott,388.0,2020
+401155424,World Golf Championship-Mexico Championship,2020-02-20,10500000.0,266.0,72.0,Patrick Reed,5579.0,2020
+401155425,Puerto Rico Open,2020-02-20,3000000.0,268.0,120.0,Viktor Hovland,4364873.0,2020
+401155426,The Honda Classic,2020-02-27,7000000.0,274.0,144.0,Sungjae Im,11382.0,2020
+401155427,Arnold Palmer Invitational Pres. By Mastercard,2020-03-05,9300000.0,284.0,121.0,Tyrrell Hatton,5553.0,2020
+401155428,THE PLAYERS Championship,2020-03-12,15000000.0,,,,,2020
+401219495,Valspar Championship,2020-03-19,6900000.0,,,,,2020
+401219497,Valero Texas Open,2020-04-02,1350000.0,,,,,2020
+401219499,Zurich Classic of New Orleans,2020-04-23,7400000.0,,,,,2020
+401219500,Wells Fargo Championship,2020-04-30,,,,,,2020
+401219501,AT&T Byron Nelson,2020-05-07,8100000.0,,,,,2020
+401220113,The Match: Champions for Charity,2020-05-24,,,0.0,,,2020
+401155459,Charles Schwab Challenge,2020-06-11,7500000.0,265.0,148.0,Daniel Berger,9025.0,2020
+401223553,RBC Canadian Open,2020-06-11,7800000.0,,,,,2020
+401219498,RBC Heritage,2020-06-18,7100000.0,262.0,151.0,Webb Simpson,1614.0,2020
+401155466,Travelers Championship,2020-06-25,7400000.0,261.0,156.0,Dustin Johnson,3448.0,2020
+401155460,Rocket Mortgage Classic,2020-07-02,7500000.0,265.0,157.0,Bryson DeChambeau,10046.0,2020
+401223849,Workday Charity Open,2020-07-09,620000.0,269.0,157.0,Collin Morikawa,10592.0,2020
+401230732,John Deere Classic,2020-07-09,6200000.0,,,,,2020
+401155461,the Memorial Tournament pres. by Nationwide,2020-07-16,9300000.0,279.0,131.0,Jon Rahm,9780.0,2020
+401231117,The Open Championship,2020-07-16,10750000.0,,,,,2020
+401231118,Barbasol Championship,2020-07-16,3500000.0,,,,,2020
+401155472,3M Open,2020-07-23,6600000.0,265.0,156.0,Michael Thompson,3688.0,2020
+401155467,World Golf Championship-FedEx St. Jude Invitational,2020-07-30,10500000.0,267.0,78.0,Justin Thomas,4848.0,2020
+401155468,Barracuda Championship,2020-07-30,3500000.0,,,,,2020
+401219481,PGA Championship,2020-08-06,11000000.0,267.0,156.0,Collin Morikawa,10592.0,2020
+401155473,Wyndham Championship,2020-08-13,6400000.0,259.0,156.0,Jim Herman,3598.0,2020
+401155474,THE NORTHERN TRUST,2020-08-20,9500000.0,254.0,123.0,Dustin Johnson,3448.0,2020
+401155475,BMW Championship,2020-08-27,9500000.0,276.0,69.0,Jon Rahm,9780.0,2020
+401155476,Tour Championship,2020-09-04,,269.0,30.0,Dustin Johnson,3448.0,2020
+401056252,Safeway Open,2018-10-04,6400000.0,274.0,144.0,Kevin Tway,3793.0,2019
+401056500,CIMB Classic,2018-10-10,7000000.0,262.0,78.0,Marc Leishman,3351.0,2019
+401056501,THE CJ CUP @ NINE BRIDGES,2018-10-17,9500000.0,267.0,78.0,Brooks Koepka,6798.0,2019
+401056502,World Golf Championship-HSBC CHAMPIONS,2018-10-24,10000000.0,274.0,78.0,Xander Schauffele,10140.0,2019
+401056503,Sanderson Farms Championship,2018-10-25,4400000.0,267.0,132.0,Cameron Champ,11098.0,2019
+401056504,Shriners Hospitals for Children Open,2018-11-01,7000000.0,263.0,132.0,Bryson DeChambeau,10046.0,2019
+401056505,Mayakoba Golf Classic,2018-11-08,7200000.0,262.0,132.0,Matt Kuchar,257.0,2019
+401056506,The RSM Classic,2018-11-15,6400000.0,263.0,156.0,Charles Howell III,208.0,2019
+401077168,The Match: Tiger vs Phil,2018-11-23,900000.0,,0.0,,,2019
+401077167,Hero World Challenge,2018-11-29,3500000.0,268.0,18.0,Jon Rahm,9780.0,2019
+401056507,Sentry Tournament of Champions,2019-01-03,7000000.0,269.0,34.0,Xander Schauffele,10140.0,2019
+401056510,Sony Open in Hawaii,2019-01-10,6400000.0,258.0,144.0,Matt Kuchar,257.0,2019
+401056511,Desert Classic,2019-01-17,5900000.0,262.0,156.0,Adam Long,6015.0,2019
+401056512,Farmers Insurance Open,2019-01-24,7100000.0,267.0,156.0,Justin Rose,569.0,2019
+401056513,Waste Management Phoenix Open,2019-01-31,7100000.0,267.0,132.0,Rickie Fowler,3702.0,2019
+401056514,AT&T Pebble Beach Pro-Am,2019-02-07,7600000.0,268.0,156.0,Phil Mickelson,308.0,2019
+401056515,Genesis Open,2019-02-14,7400000.0,270.0,144.0,J.B. Holmes,1067.0,2019
+401056516,World Golf Championship-Mexico Championship,2019-02-21,10250000.0,263.0,72.0,Dustin Johnson,3448.0,2019
+401056517,Puerto Rico Open,2019-02-21,300000.0,273.0,132.0,Martin Trainer,6151.0,2019
+401056520,The Honda Classic,2019-02-28,6800000.0,271.0,144.0,Keith Mitchell,8906.0,2019
+401056521,Arnold Palmer Invitational Pres. By Mastercard,2019-03-07,9100000.0,276.0,123.0,Francesco Molinari,1483.0,2019
+401056522,THE PLAYERS Championship,2019-03-14,12500000.0,272.0,144.0,Rory McIlroy,3470.0,2019
+401056523,Valspar Championship,2019-03-21,6700000.0,276.0,144.0,Paul Casey,72.0,2019
+401056524,World Golf Championship-Dell Technologies Match Play,2019-03-27,1025000.0,,0.0,,,2019
+401056525,Corales Puntacana Resort & Club Championship,2019-03-28,3000000.0,270.0,132.0,Graeme McDowell,301.0,2019
+401056526,Valero Texas Open,2019-04-04,7500000.0,268.0,144.0,Corey Conners,9126.0,2019
+401056527,Masters Tournament,2019-04-11,11000000.0,275.0,87.0,Tiger Woods,462.0,2019
+401056528,RBC Heritage,2019-04-18,6900000.0,272.0,132.0,C.T. Pan,6017.0,2019
+401056529,Zurich Classic Of New Orleans,2019-04-25,7300000.0,,,,,2019
+401056550,Wells Fargo Championship,2019-05-02,7900000.0,269.0,156.0,Max Homa,8973.0,2019
+401056551,AT&T Byron Nelson,2019-05-09,7900000.0,261.0,156.0,Sung Kang,4449.0,2019
+401056552,PGA Championship,2019-05-16,10500000.0,272.0,156.0,Brooks Koepka,6798.0,2019
+401056553,Charles Schwab Challenge,2019-05-23,7300000.0,267.0,122.0,Kevin Na,318.0,2019
+401056554,the Memorial Tournament pres. by Nationwide,2019-05-30,9100000.0,269.0,120.0,Patrick Cantlay,6007.0,2019
+401056555,RBC Canadian Open,2019-06-06,7600000.0,258.0,156.0,Rory McIlroy,3470.0,2019
+401056556,U.S. Open,2019-06-13,12500000.0,271.0,156.0,Gary Woodland,3550.0,2019
+401056549,Travelers Championship,2019-06-20,7200000.0,263.0,156.0,Chez Reavie,769.0,2019
+401056557,Rocket Mortgage Classic,2019-06-27,730000.0,263.0,156.0,Nate Lashley,1600.0,2019
+401056558,3M Open,2019-07-04,640000.0,263.0,156.0,Matthew Wolff,4412121.0,2019
+401056548,John Deere Classic,2019-07-11,6000000.0,263.0,156.0,Dylan Frittelli,5167.0,2019
+401056547,The Open Championship,2019-07-18,10750000.0,269.0,156.0,Shane Lowry,4587.0,2019
+401056546,Barbasol Championship,2019-07-18,3500000.0,262.0,132.0,Jim Herman,3598.0,2019
+401056559,World Golf Championship-FedEx St. Jude Invitational,2019-07-25,10250000.0,264.0,63.0,Brooks Koepka,6798.0,2019
+401056560,Barracuda Championship,2019-07-25,3500000.0,,,,,2019
+401056545,Wyndham Championship,2019-08-01,6200000.0,258.0,156.0,J.T. Poston,10505.0,2019
+401056544,THE NORTHERN TRUST,2019-08-08,9250000.0,268.0,121.0,Patrick Reed,5579.0,2019
+401056543,BMW Championship,2019-08-15,9250000.0,263.0,69.0,Justin Thomas,4848.0,2019
+401056542,Tour Championship,2019-08-22,,267.0,30.0,Rory McIlroy,3470.0,2019
+3777,Safeway Open,2017-10-05,6200000.0,273.0,144.0,Brendan Steele,3596.0,2018
+3780,CIMB Classic,2017-10-12,7000000.0,264.0,78.0,Pat Perez,707.0,2018
+3802,THE CJ CUP @ NINE BRIDGES,2017-10-19,925000.0,279.0,78.0,Justin Thomas,4848.0,2018
+3763,Sanderson Farms Championship,2017-10-26,4300000.0,269.0,132.0,Ryan Armour,1750.0,2018
+3774,World Golf Championships-HSBC Champions,2017-10-26,9750000.0,274.0,78.0,Justin Rose,569.0,2018
+3768,Shriners Hospitals for Children Open,2017-11-02,6800000.0,275.0,144.0,Patrick Cantlay,6007.0,2018
+3776,OHL Classic at Mayakoba,2017-11-09,7100000.0,265.0,132.0,Patton Kizzire,3980.0,2018
+3781,The RSM Classic,2017-11-16,6200000.0,261.0,156.0,Austin Cook,9517.0,2018
+3791,Hero World Challenge,2017-11-30,3500000.0,270.0,18.0,Rickie Fowler,3702.0,2018
+3742,Sentry Tournament of Champions,2018-01-04,6300000.0,268.0,34.0,Dustin Johnson,3448.0,2018
+3747,Sony Open in Hawaii,2018-01-11,6200000.0,263.0,144.0,Patton Kizzire,3980.0,2018
+3743,CareerBuilder Challenge,2018-01-18,5900000.0,266.0,156.0,Jon Rahm,9780.0,2018
+3746,Farmers Insurance Open,2018-01-25,6900000.0,278.0,156.0,Jason Day,1680.0,2018
+3744,Waste Management Phoenix Open,2018-02-01,6900000.0,266.0,132.0,Gary Woodland,3550.0,2018
+3745,AT&T Pebble Beach Pro-Am,2018-02-08,7400000.0,270.0,156.0,"Ted Potter, Jr.",2883.0,2018
+3748,Genesis Open,2018-02-15,7200000.0,272.0,144.0,Bubba Watson,780.0,2018
+3749,The Honda Classic,2018-02-22,6600000.0,272.0,144.0,Justin Thomas,4848.0,2018
+3789,World Golf Championships-Mexico Championship,2018-03-01,10000000.0,268.0,64.0,Phil Mickelson,308.0,2018
+3771,Valspar Championship,2018-03-08,6500000.0,274.0,144.0,Paul Casey,72.0,2018
+3750,Arnold Palmer Invitational presented by Mastercard,2018-03-15,8900000.0,270.0,120.0,Rory McIlroy,3470.0,2018
+3772,World Golf Championships-Dell Technologies Match Play,2018-03-21,1000000.0,,0.0,,,2018
+3803,Corales Puntacana Resort & Club Championship,2018-03-22,300000.0,270.0,132.0,Brice Garnett,2283.0,2018
+3756,Houston Open,2018-03-29,7000000.0,269.0,144.0,Ian Poulter,619.0,2018
+401025221,Masters Tournament,2018-04-05,11000000.0,273.0,87.0,Patrick Reed,5579.0,2018
+401025246,RBC Heritage,2018-04-12,6700000.0,272.0,132.0,Satoshi Kodaira,9076.0,2018
+401025247,Valero Texas Open,2018-04-19,6200000.0,271.0,156.0,Andrew Landry,4682.0,2018
+401025248,Zurich Classic of New Orleans,2018-04-26,7200000.0,,,,,2018
+401025249,Wells Fargo Championship,2018-05-03,7700000.0,272.0,156.0,Jason Day,1680.0,2018
+401025250,The Players Championship,2018-05-10,10500000.0,270.0,144.0,Webb Simpson,1614.0,2018
+401025251,AT&T Byron Nelson,2018-05-17,7700000.0,261.0,156.0,Aaron Wise,10577.0,2018
+401025252,Fort Worth Invitational,2018-05-24,7100000.0,260.0,121.0,Justin Rose,569.0,2018
+401025253,the Memorial Tournament pres. by Nationwide,2018-05-31,8900000.0,273.0,120.0,Bryson DeChambeau,10046.0,2018
+401025254,FedEx St. Jude Classic,2018-06-07,6600000.0,261.0,156.0,Dustin Johnson,3448.0,2018
+401025255,U.S. Open,2018-06-14,12000000.0,281.0,156.0,Brooks Koepka,6798.0,2018
+401025256,Travelers Championship,2018-06-21,7000000.0,263.0,156.0,Bubba Watson,780.0,2018
+401025270,Quicken Loans National,2018-06-28,7100000.0,259.0,120.0,Francesco Molinari,1483.0,2018
+401025257,A Military Tribute at The Greenbrier,2018-07-05,7300000.0,261.0,156.0,Kevin Na,318.0,2018
+401025258,John Deere Classic,2018-07-12,5800000.0,257.0,156.0,Michael Kim,8974.0,2018
+401025259,The Open Championship,2018-07-19,10800000.0,276.0,155.0,Francesco Molinari,1483.0,2018
+401025271,Barbasol Championship,2018-07-19,3500000.0,265.0,132.0,Troy Merritt,3970.0,2018
+401025260,RBC Canadian Open,2018-07-26,6200000.0,265.0,155.0,Dustin Johnson,3448.0,2018
+401025261,World Golf Championship-Bridgestone Invitational,2018-08-02,10000000.0,265.0,71.0,Justin Thomas,4848.0,2018
+401025262,Barracuda Championship,2018-08-02,3400000.0,,,,,2018
+401025263,PGA Championship,2018-08-09,10500000.0,264.0,156.0,Brooks Koepka,6798.0,2018
+401025264,Wyndham Championship,2018-08-16,6000000.0,259.0,156.0,Brandt Snedeker,1222.0,2018
+401025265,THE NORTHERN TRUST,2018-08-23,9000000.0,266.0,119.0,Bryson DeChambeau,10046.0,2018
+401025266,Dell Technologies Championship,2018-08-31,9000000.0,268.0,98.0,Bryson DeChambeau,10046.0,2018
+401025267,BMW Championship,2018-09-06,9000000.0,260.0,69.0,Keegan Bradley,4513.0,2018
+401025268,Tour Championship,2018-09-20,9000000.0,269.0,30.0,Tiger Woods,462.0,2018
+401025269,Ryder Cup,2018-09-28,,,0.0,,,2018
+2725,Safeway Open,2016-10-13,6000000.0,270.0,144.0,Brendan Steele,3596.0,2017
+2728,CIMB Classic,2016-10-20,7000000.0,265.0,78.0,Justin Thomas,4848.0,2017
+2722,World Golf Championships-HSBC Champions,2016-10-26,9500000.0,265.0,80.0,Hideki Matsuyama,5860.0,2017
+2711,Sanderson Farms Championship,2016-10-27,4200000.0,268.0,132.0,Cody Gribble,8971.0,2017
+2716,Shriners Hospitals for Children Open,2016-11-03,6600000.0,264.0,144.0,Rod Pampling,335.0,2017
+2724,OHL Classic at Mayakoba,2016-11-10,7000010.0,263.0,132.0,Pat Perez,707.0,2017
+2729,The RSM Classic,2016-11-17,6000000.0,265.0,156.0,Mackenzie Hughes,6931.0,2017
+3069,Hero World Challenge,2016-12-01,3500000.0,270.0,18.0,Hideki Matsuyama,5860.0,2017
+2689,SBS Tournament of Champions,2017-01-05,6100000.0,270.0,32.0,Justin Thomas,4848.0,2017
+2694,Sony Open in Hawaii,2017-01-12,6000000.0,253.0,144.0,Justin Thomas,4848.0,2017
+2690,CareerBuilder Challenge,2017-01-19,5800000.0,268.0,156.0,Hudson Swafford,5504.0,2017
+2693,Farmers Insurance Open,2017-01-26,6700000.0,275.0,156.0,Jon Rahm,9780.0,2017
+2691,Waste Management Phoenix Open,2017-02-02,6700000.0,267.0,132.0,Hideki Matsuyama,5860.0,2017
+2692,AT&T Pebble Beach Pro-Am,2017-02-09,7200000.0,268.0,156.0,Jordan Spieth,5467.0,2017
+2695,Genesis Open,2017-02-16,700000.0,267.0,144.0,Dustin Johnson,3448.0,2017
+2696,The Honda Classic,2017-02-23,6400000.0,268.0,144.0,Rickie Fowler,3702.0,2017
+3735,World Golf Championships-Mexico Championship,2017-03-02,9750000.0,270.0,77.0,Dustin Johnson,3448.0,2017
+2719,Valspar Championship,2017-03-09,6300000.0,270.0,144.0,Adam Hadwin,5548.0,2017
+2697,Arnold Palmer Invitational presented by Mastercard,2017-03-16,8700000.0,277.0,120.0,Marc Leishman,3351.0,2017
+2720,World Golf Championships-Dell Technologies Match Play,2017-03-22,975000.0,,0.0,,,2017
+2726,Puerto Rico Open,2017-03-23,3000000.0,268.0,132.0,D.A. Points,1196.0,2017
+2703,Shell Houston Open,2017-03-30,7000000.0,268.0,144.0,Russell Henley,5409.0,2017
+2700,Masters Tournament,2017-04-06,10000000.0,279.0,94.0,Sergio Garcia,158.0,2017
+2701,RBC Heritage,2017-04-13,6500000.0,271.0,132.0,Wesley Bryan,10360.0,2017
+2717,Valero Texas Open,2017-04-20,6200000.0,276.0,156.0,Kevin Chappell,3857.0,2017
+2698,Zurich Classic of New Orleans,2017-04-27,7100000.0,,,,,2017
+3067,Wells Fargo Championship,2017-05-04,7500000.0,278.0,156.0,Brian Harman,1225.0,2017
+2699,THE PLAYERS Championship,2017-05-11,10500000.0,278.0,145.0,Si Woo Kim,7081.0,2017
+2704,AT&T Byron Nelson,2017-05-18,7500000.0,268.0,156.0,Billy Horschel,1651.0,2017
+2705,DEAN & DELUCA Invitational,2017-05-25,6900000.0,270.0,121.0,Kevin Kisner,2552.0,2017
+2706,the Memorial Tournament presented by Nationwide,2017-06-01,8700000.0,275.0,120.0,Jason Dufner,110.0,2017
+2707,FedEx St. Jude Classic,2017-06-08,6400000.0,270.0,156.0,Daniel Berger,9025.0,2017
+3066,U.S. Open,2017-06-15,1200000.0,272.0,156.0,Brooks Koepka,6798.0,2017
+2708,Travelers Championship,2017-06-22,6800000.0,268.0,156.0,Jordan Spieth,5467.0,2017
+3068,Quicken Loans National,2017-06-29,7100000.0,273.0,120.0,Kyle Stanley,1778.0,2017
+2727,The Greenbrier Classic,2017-07-06,710000.0,266.0,156.0,Xander Schauffele,10140.0,2017
+2715,John Deere Classic,2017-07-13,5600000.0,266.0,156.0,Bryson DeChambeau,10046.0,2017
+2710,The Open Championship,2017-07-20,10250000.0,268.0,156.0,Jordan Spieth,5467.0,2017
+2730,Barbasol Championship,2017-07-20,3500000.0,263.0,132.0,Grayson Murray,5462.0,2017
+2714,RBC Canadian Open,2017-07-27,6000000.0,267.0,156.0,Jhonattan Vegas,1030.0,2017
+2713,World Golf Championships-Bridgestone Invitational,2017-08-03,9750000.0,264.0,76.0,Hideki Matsuyama,5860.0,2017
+2721,Barracuda Championship,2017-08-03,3300000.0,,,,,2017
+2712,PGA Championship,2017-08-10,10500000.0,276.0,156.0,Justin Thomas,4848.0,2017
+2702,Wyndham Championship,2017-08-17,5800000.0,258.0,156.0,Henrik Stenson,576.0,2017
+3065,THE NORTHERN TRUST,2017-08-24,875000.0,267.0,120.0,Dustin Johnson,3448.0,2017
+2723,Dell Technologies Championship,2017-09-01,8750000.0,267.0,96.0,Justin Thomas,4848.0,2017
+2709,BMW Championship,2017-09-14,8750000.0,261.0,70.0,Marc Leishman,3351.0,2017
+2718,TOUR Championship,2017-09-21,8750000.0,268.0,30.0,Xander Schauffele,10140.0,2017
+3070,Presidents Cup,2017-09-28,,,0.0,,,2017
