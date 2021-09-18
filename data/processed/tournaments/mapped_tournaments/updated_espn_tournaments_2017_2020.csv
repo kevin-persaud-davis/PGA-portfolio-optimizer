@@ -22,7 +22,7 @@ tournament_id,tournament_name,date,tournament_purse,win_total,tournament_size,wi
 401155424,World Golf Championships-Mexico Championship,2020-02-20,10500000.0,266.0,72.0,Patrick Reed,5579.0,2020
 401155425,Puerto Rico Open,2020-02-20,3000000.0,268.0,120.0,Viktor Hovland,4364873.0,2020
 401155426,The Honda Classic,2020-02-27,7000000.0,274.0,144.0,Sungjae Im,11382.0,2020
-401155427,Arnold Palmer Invitational Pres. By Mastercard,2020-03-05,9300000.0,284.0,121.0,Tyrrell Hatton,5553.0,2020
+401155427,Arnold Palmer Invitational presented by Mastercard,2020-03-05,9300000.0,284.0,121.0,Tyrrell Hatton,5553.0,2020
 401155428,THE PLAYERS Championship,2020-03-12,15000000.0,,,,,2020
 401219495,Valspar Championship,2020-03-19,6900000.0,,,,,2020
 401219497,Valero Texas Open,2020-04-02,1350000.0,,,,,2020
@@ -37,7 +37,7 @@ tournament_id,tournament_name,date,tournament_purse,win_total,tournament_size,wi
 401155460,Rocket Mortgage Classic,2020-07-02,7500000.0,265.0,157.0,Bryson DeChambeau,10046.0,2020
 401223849,Workday Charity Open,2020-07-09,620000.0,269.0,157.0,Collin Morikawa,10592.0,2020
 401230732,John Deere Classic,2020-07-09,6200000.0,,,,,2020
-401155461,the Memorial Tournament pres. by Nationwide,2020-07-16,9300000.0,279.0,131.0,Jon Rahm,9780.0,2020
+401155461,the Memorial Tournament presented by Nationwide,2020-07-16,9300000.0,279.0,131.0,Jon Rahm,9780.0,2020
 401231117,The Open Championship,2020-07-16,10750000.0,,,,,2020
 401231118,Barbasol Championship,2020-07-16,3500000.0,,,,,2020
 401155472,3M Open,2020-07-23,6600000.0,265.0,156.0,Michael Thompson,3688.0,2020
@@ -68,7 +68,7 @@ tournament_id,tournament_name,date,tournament_purse,win_total,tournament_size,wi
 401056516,World Golf Championships-Mexico Championship,2019-02-21,10250000.0,263.0,72.0,Dustin Johnson,3448.0,2019
 401056517,Puerto Rico Open,2019-02-21,300000.0,273.0,132.0,Martin Trainer,6151.0,2019
 401056520,The Honda Classic,2019-02-28,6800000.0,271.0,144.0,Keith Mitchell,8906.0,2019
-401056521,Arnold Palmer Invitational Pres. By Mastercard,2019-03-07,9100000.0,276.0,123.0,Francesco Molinari,1483.0,2019
+401056521,Arnold Palmer Invitational presented by Mastercard,2019-03-07,9100000.0,276.0,123.0,Francesco Molinari,1483.0,2019
 401056522,THE PLAYERS Championship,2019-03-14,12500000.0,272.0,144.0,Rory McIlroy,3470.0,2019
 401056523,Valspar Championship,2019-03-21,6700000.0,276.0,144.0,Paul Casey,72.0,2019
 401056524,World Golf Championships-Dell Technologies Match Play,2019-03-27,1025000.0,,0.0,,,2019
@@ -81,7 +81,7 @@ tournament_id,tournament_name,date,tournament_purse,win_total,tournament_size,wi
 401056551,AT&T Byron Nelson,2019-05-09,7900000.0,261.0,156.0,Sung Kang,4449.0,2019
 401056552,PGA Championship,2019-05-16,10500000.0,272.0,156.0,Brooks Koepka,6798.0,2019
 401056553,Charles Schwab Challenge,2019-05-23,7300000.0,267.0,122.0,Kevin Na,318.0,2019
-401056554,the Memorial Tournament pres. by Nationwide,2019-05-30,9100000.0,269.0,120.0,Patrick Cantlay,6007.0,2019
+401056554,the Memorial Tournament presented by Nationwide,2019-05-30,9100000.0,269.0,120.0,Patrick Cantlay,6007.0,2019
 401056555,RBC Canadian Open,2019-06-06,7600000.0,258.0,156.0,Rory McIlroy,3470.0,2019
 401056556,U.S. Open,2019-06-13,12500000.0,271.0,156.0,Gary Woodland,3550.0,2019
 401056549,Travelers Championship,2019-06-20,7200000.0,263.0,156.0,Chez Reavie,769.0,2019
@@ -127,7 +127,7 @@ tournament_id,tournament_name,date,tournament_purse,win_total,tournament_size,wi
 401025250,The Players Championship,2018-05-10,10500000.0,270.0,144.0,Webb Simpson,1614.0,2018
 401025251,AT&T Byron Nelson,2018-05-17,7700000.0,261.0,156.0,Aaron Wise,10577.0,2018
 401025252,Fort Worth Invitational,2018-05-24,7100000.0,260.0,121.0,Justin Rose,569.0,2018
-401025253,the Memorial Tournament pres. by Nationwide,2018-05-31,8900000.0,273.0,120.0,Bryson DeChambeau,10046.0,2018
+401025253,the Memorial Tournament presented by Nationwide,2018-05-31,8900000.0,273.0,120.0,Bryson DeChambeau,10046.0,2018
 401025254,FedEx St. Jude Classic,2018-06-07,6600000.0,261.0,156.0,Dustin Johnson,3448.0,2018
 401025255,U.S. Open,2018-06-14,12000000.0,281.0,156.0,Brooks Koepka,6798.0,2018
 401025256,Travelers Championship,2018-06-21,7000000.0,263.0,156.0,Bubba Watson,780.0,2018
