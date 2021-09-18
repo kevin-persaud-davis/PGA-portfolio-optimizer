@@ -471,8 +471,8 @@ def alter_tournament_names(df, fname=None):
     df.loc[wgc_tournaments.index, "tournament_name"] = wgc_tournaments
 
     df.replace("The Open", "The Open Championship", inplace=True)
-    df.replace("Arnold Palmer Invitational Pres.", "Arnold Palmer Invitational presented", inplace=True)
-    df.replace("the Memorial Tournament pres.", "the Memorial Tournament presented", inplace=True)
+    df.replace("Arnold Palmer Invitational Pres. By Mastercard", "Arnold Palmer Invitational presented by Mastercard", inplace=True)
+    df.replace("the Memorial Tournament pres. by Nationwide", "the Memorial Tournament presented by Nationwide", inplace=True)
     df.replace("Shriners Hospital for Children Open", "Shriners Hospitals for Children Open", inplace=True)
     df.replace("THE ZOZO CHAMPIONSHIP", "ZOZO CHAMPIONSHIP", inplace=True)
 
