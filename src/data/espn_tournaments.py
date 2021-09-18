@@ -490,7 +490,7 @@ if __name__ == "__main__":
 
     valid_espn_df = filter_valid_tournaments(espn_df)
 
-    v_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "valid_upt_espn_tournaments_2017_2019.csv"))
+    v_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "valid_upt_espn_tournaments_2017_2020.csv"))
     valid_espn_df.to_csv(v_tourn_path, index=False)
 
     # valid_tournaments_df = filter_valid_tournaments(df)
