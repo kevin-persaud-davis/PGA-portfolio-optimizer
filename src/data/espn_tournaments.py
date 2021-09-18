@@ -451,14 +451,42 @@ def create_subset_tournaments(tourn_path, subset_path, valid_tourns=True):
 
     subset_tournaments_df.to_csv(subset_tournaments_path, index=False)
 
+def alter_tournament_names(df, fname=None):
+    """Change espn tournament names to match more closely to pgatour's conventions
+    
+    Args:
+        df (pd.DataFrame) : espn tournaments
+
+        fname (str) : file name, optional arg
+    Returns:
+    
+    """
+    seasons = df.season_id.unique()
+
+    for season in seasons:
+        df.replace(f"{season} Masters Tournament", "Masters Tournament", inplace=True)
+
+    wgc_tournaments = df[["tournament_name"]][df.tournament_name.str.contains("WGC-")]
+    wgc_tournaments.loc[:, "tournament_name"] = wgc_tournaments.tournament_name.apply(lambda x: x.replace("WGC-", "World Golf Championship-"))
+    df.loc[wgc_tournaments.index, "tournament_name"] = wgc_tournaments
+
+    df.replace("The Open", "The Open Championship", inplace=True)
+    df.replace("Arnold Palmer Invitational Pres.", "Arnold Palmer Invitational presented", inplace=True)
+    df.replace("the Memorial Tournament pres.", "the Memorial Tournament presented", inplace=True)
+    df.replace("Shriners Hospital for Children Open", "Shriners Hospitals for Children Open", inplace=True)
+    df.replace("THE ZOZO CHAMPIONSHIP", "ZOZO CHAMPIONSHIP", inplace=True)
+
+    if fname is not None:
+        a_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, fname))
+
+        df.to_csv(a_tourn_path, index=False)
 
 
 if __name__ == "__main__":
     
+    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
     
-    # espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
-    
-    # df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
+    espn_df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
 
     # valid_tournaments_df = filter_valid_tournaments(df)
 
@@ -466,4 +494,6 @@ if __name__ == "__main__":
 
     # valid_tournaments_df.to_csv(valid_tournaments_path, index=False)
     
-    get_espn_schedule(2011, 2016)
+    # get_espn_schedule(2011, 2016)
+
+    alter_tournament_names(espn_df, "updated_espn_tournaments_2017_2020.csv")
