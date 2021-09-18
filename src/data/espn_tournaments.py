@@ -474,7 +474,7 @@ def alter_tournament_names(df, fname=None):
     df.replace("Arnold Palmer Invitational Pres. By Mastercard", "Arnold Palmer Invitational presented by Mastercard", inplace=True)
     df.replace("the Memorial Tournament pres. by Nationwide", "the Memorial Tournament presented by Nationwide", inplace=True)
     df.replace("Shriners Hospital for Children Open", "Shriners Hospitals for Children Open", inplace=True)
-    df.replace("THE ZOZO CHAMPIONSHIP", "ZOZO CHAMPIONSHIP", inplace=True)
+    df.replace("The ZOZO CHAMPIONSHIP", "ZOZO CHAMPIONSHIP", inplace=True)
 
     if fname is not None:
         a_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, fname))
