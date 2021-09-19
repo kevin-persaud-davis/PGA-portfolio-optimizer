@@ -271,6 +271,66 @@ def run_pgatour_metrics(metric_url, start, end=None):
     fpath = str(Path(config.RAW_PGA_METRICS_DIR, fname))
     pga_metric_df.to_csv(fpath, index=False)
 
+def find_tourn_mapping(df1, df2, start, end=None):
+    """Find tournament id mapping between espn and pgatour"""
+
+    # df2_copy = df2.copy()
+    mapped_tourns = []
+    if end is not None:
+        seasons = [season for season in range(start, end+1)]
+
+    else:
+        seasons = [start]
+
+    for season in seasons:
+        
+        if "season" in df1.columns:
+            df1.rename(columns={"season":"season_id"}, inplace=True)
+        
+        if "season" in df2.columns:
+            df2.rename(columns={"season":"season_id"}, inplace=True)
+
+        df1_season = df1[df1.season_id==season].copy()
+        df2_season = df2[df2.season_id==season].copy()
+
+        # if "season" in df1.columns:
+        #     df1_season = df1[df1.season==season].copy()
+
+        # if "season_id" in df1.columns:
+        #     df1_season = df1[df1.season_id==season].copy()
+
+        # if "season" in df2.columns:
+        #     df2_season = df2[df2.season==season].copy()
+
+        # if "season_id" in df2.columns:
+        #     df2_season = df2[df2.season_id==season].copy()
+    
+        missing_t_ids = df2_season["tournament_id"][~df2_season.tournament_name.apply(
+                                                            lambda tournament: 
+                                                            df1_season.tournament_name.str.contains(tournament, case=False)).any(1)].values
+        
+        matching_df = df2_season[["tournament_id", "tournament_name"]][~df2_season.tournament_id.isin(missing_t_ids)].reset_index()
+
+        matching_df["tournament_name"] = matching_df.apply(lambda x: x["tournament_name"].lower(), axis=1)
+        df1_season["tournament_name"] = df1_season.apply(lambda x: x["tournament_name"].lower(), axis=1)
+
+        new_df = matching_df.merge(df1_season, on=["tournament_name"], suffixes=("_espn", "_pgatour")).set_index("index")
+
+        # By keeping track of the index, I can enter column into originally passed df2 or copy of that dataframe
+
+        new_df = new_df[["tournament_id_espn", "tournament_id_pgatour", "tournament_name", "season_id"]]
+        if df1_season.shape[0] == new_df.shape[0]:
+            
+            mapped_tourns.append(new_df)
+        # mapped_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, f"tournaments_{season}.csv"))
+        # new_df.to_csv(mapped_tourn_path, index=False)
+
+        else:
+            print(f"dataframes have different number of tournaments. {df1_season.shape[0]} vs {new_df.shape[0]}")
+
+
+    return mapped_tourns
+
 
 def find_tid_mapping(df1, df2, start, end=None):
     """Find tournament id mapping between espn and pgatour"""
@@ -408,6 +468,13 @@ if __name__ == "__main__":
     espn_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "espn_tournaments_2017_2020.csv"))
     espn_tourns = pd.read_csv(espn_tournaments_path)
 
+    altered_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "updated_espn_tournaments_2017_2020.csv"))
+    altered_tourn_df = pd.read_csv(altered_tourn_path)
+
+    pgatour_tournaments_path = str(Path(config.RAW_DATA_DIR, "PGATOUR_tournament_ids_2017_2020.csv"))
+    pgatour_df = pd.read_csv(pgatour_tournaments_path)
+
+
     pga_seasons = espn_tourns.season_id.unique()
     start_season, end_season = pga_seasons[-1], pga_seasons[0]
     
@@ -422,8 +489,14 @@ if __name__ == "__main__":
 
     pga_metrics = [sg_total, sg_ttg, sg_approach]
 
-    for metric in pga_metrics:
-        run_pgatour_metrics(metric, start_season, end_season)
+    # for metric in pga_metrics:
+    #     run_pgatour_metrics(metric, start_season, end_season)
+    
+    mapped_tourns_list = find_tourn_mapping(pgatour_df, altered_tourn_df, start_season, end_season)
+    mapped_tourns_df = pd.concat(mapped_tourns_list)
+    
+    mapped_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "mapped_tournament_ids_2017_2020.csv"))
+    mapped_tourns_df.to_csv(mapped_tourn_path, index=False)
 
 
     # pgatour metrics process
