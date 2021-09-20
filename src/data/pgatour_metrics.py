@@ -318,63 +318,6 @@ def find_tourn_mapping(df1, df2, start, end=None):
     return mapped_tourns
 
 
-def find_tid_mapping(df1, df2, start, end=None):
-    """Find tournament id mapping between espn and pgatour"""
-
-    # df2_copy = df2.copy()
-    mapped_tourns = []
-    if end is not None:
-        seasons = [season for season in range(start, end+1)]
-
-    else:
-        seasons = [start]
-
-    for season in seasons:
-        
-        df1_season = df1[df1.season==season].copy()
-        df2_season = df2[df2.season_id==season].copy()
-
-        if season==2017:
-
-            df2_season.replace(f"{season} Masters Tournament", "Masters Tournament", inplace=True)
-            df2_season.replace("The Open", "The Open Championship", inplace=True)
-        
-        if season==2018:
-
-            df2_season.replace(f"{season} Masters Tournament", "Masters Tournament", inplace=True)
-            df2_season.replace("The Open", "The Open Championship", inplace=True)
-            df2_season.replace("WGC-Bridgestone Invitational", "World Golf Championships-Bridgestone Invitational", inplace=True)
-            df2_season.replace("the Memorial Tournament pres. by Nationwide", "the Memorial Tournament presented by Nationwide", inplace=True)
-
-        if season==2019:
-            pass
-
-        if season==2020:
-            pass
-
-
-        if df1_season.shape[0] == df2_season.shape[0]:
-            
-            missing_t_ids = df2_season["tournament_id"][~df2_season.tournament_name.apply(
-                                                                lambda tournament: 
-                                                                df1_season.tournament_name.str.contains(tournament, case=False)).any(1)].values
-            
-            matching_df = df2_season[["tournament_id", "tournament_name"]][~df2_season.tournament_id.isin(missing_t_ids)].reset_index()
-
-            new_df = matching_df.merge(df1_season, on=["tournament_name"], suffixes=("_espn", "_pgatour")).set_index("index")
-
-            # By keeping track of the index, I can enter column into originally passed df2 or copy of that dataframe
-
-            new_df = new_df[["tournament_id_espn", "tournament_id_pgatour", "tournament_name", "season"]]
-
-            mapped_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, f"tournaments_{season}.csv"))
-            new_df.to_csv(mapped_tourn_path, index=False)
-        else:
-            print(f"dataframes have different number of tournaments. {df1_season.shape[0]} vs {df2_season.shape[0]}")
-            
-    # return mapped_tourns
-
-
 def tournament_id_mapping(df1, df2, season):
     """Find tournament id mapping between two dataframes
 
