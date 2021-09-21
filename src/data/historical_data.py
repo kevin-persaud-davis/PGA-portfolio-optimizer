@@ -3,9 +3,11 @@ import os
 from fnmatch import fnmatch
 import sys
 
+from seaborn.categorical import barplot
+
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
 import config
-from espn_pgatour_id_match import get_espn_tournaments
+from pgatour_metrics import get_espn_tournaments
 
 import time
 from csv import DictWriter
@@ -55,8 +57,9 @@ def get_player_ids(t_body):
     if players is not None:
         for player in players:
             p_id_link = player.find("a")
-            p_id = find_player_id(p_id_link["href"])
-            player_ids.append(p_id)
+            if p_id_link is not None:
+                p_id = find_player_id(p_id_link["href"])
+                player_ids.append(p_id)
     return player_ids
 
 def missing_data(scoring_data):
@@ -839,56 +842,56 @@ def players_scorecard_from_tournament(url):
         if page.status_code == 200: 
             print("good url: ", url)
         
-        soup = BeautifulSoup(page.content, "lxml")
-        # Table's on webpage. index with -1 in case of playoff table
-        tourn_tables = soup.select("div.ResponsiveTable")
+            soup = BeautifulSoup(page.content, "lxml")
+            # Table's on webpage. index with -1 in case of playoff table
+            tourn_tables = soup.select("div.ResponsiveTable")
 
-        if tourn_tables is not None:
+            if tourn_tables is not None:
 
-            if len(tourn_tables) == 1:
-                
-                tourn_table = tourn_tables[-1]
-                tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
+                if len(tourn_tables) == 1:
+                    
+                    tourn_table = tourn_tables[-1]
+                    tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
 
-                tourn_players = get_player_ids(tourn_body)
-                # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
-                scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
-                scorecard_back = "/tournamentId/"
-                valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
-                                    for player in tourn_players]
+                    tourn_players = get_player_ids(tourn_body)
+                    # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
+                    scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
+                    scorecard_back = "/tournamentId/"
+                    valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
+                                        for player in tourn_players]
 
-                # print(valid_player_urls)
-                player_data = [player_scorecard(player) for player in valid_player_urls]
-                print("\nNumber of players: ", len(player_data))
-                return player_data
+                    # print(valid_player_urls)
+                    player_data = [player_scorecard(player) for player in valid_player_urls]
+                    print("\nNumber of players: ", len(player_data))
+                    return player_data
 
-            elif len(tourn_tables) == 2:
+                elif len(tourn_tables) == 2:
 
-                tourn_table = tourn_tables[-1]
-                tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
+                    tourn_table = tourn_tables[-1]
+                    tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
 
-                tourn_players = get_player_ids(tourn_body)
-                # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
-                scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
-                scorecard_back = "/tournamentId/"
-                valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
-                                    for player in tourn_players]
+                    tourn_players = get_player_ids(tourn_body)
+                    # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
+                    scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
+                    scorecard_back = "/tournamentId/"
+                    valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
+                                        for player in tourn_players]
 
-                # print(valid_player_urls)
-                player_data = [player_scorecard(player) for player in valid_player_urls]
-                print("\nNumber of players: ", len(player_data))
-                return player_data
+                    # print(valid_player_urls)
+                    player_data = [player_scorecard(player) for player in valid_player_urls]
+                    print("\nNumber of players: ", len(player_data))
+                    return player_data
 
-            elif len(tourn_tables) == 0:
-                
-                print(f"error with {url}")
-                # To reset error on espn server
-                page = session.get(espn_home_url)
-                return url
-                # return None
+                elif len(tourn_tables) == 0:
+                    
+                    print(f"error with {url}")
+                    # To reset error on espn server
+                    page = session.get(espn_home_url)
+                    return url
+                    # return None
 
-            else:
-                print(f"Number of tables {len(tourn_tables)} in url {url}")
+                else:
+                    print(f"Number of tables {len(tourn_tables)} in url {url}")
 
 
 def write_tournament_data(tournament_url):
@@ -915,7 +918,9 @@ def write_tournament_data(tournament_url):
     # Create unique file path from tournament id
     t_id = tournament_url[tournament_url.rfind("=")+1:]
     fn = t_id + ".csv"
-    f_path = str(Path(config.RAW_HISTORICAL_DIR, fn))
+    # Changed f_path for testing purpose and to not mix with already correct historical data
+    # When ready change path back to config.RAW_HISTORICAL_DIR
+    f_path = str(Path(config.PGA_SEASON_2015, fn))
     # fn = f_path + t_id + ".csv"
 
     with open (f_path, "w", newline="") as csvfile:
@@ -1009,7 +1014,8 @@ def historical_data_runner(start, end=None):
     for result in results:
         if result is None:
             missed_tourns.append(urls[tourn_counter])
-            print(tourn_counter)
+            print(f"URL:{urls[tourn_counter]} TYPE: {(type(urls[tourn_counter]))}")
+            print(f"Length of URL : {len(urls[tourn_counter])}")
         else:
             print(result)
         tourn_counter += 1
@@ -1120,15 +1126,14 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    run_date_transformation()
-    
-    # tourn_errors = historical_data_runner(2017, 2018)
+    tourn_errors = historical_data_runner(2016)
 
-    # if tourn_errors:
-    #     for tourn in tourn_errors:
-    #         missed_result = write_tournament_data(tourn)
-    #         print(missed_result)
+    if tourn_errors:
+        for tourn in tourn_errors:
+            missed_result = write_tournament_data(tourn)
+            print(missed_result)
     
+    # run_date_transformation()
 
     
     
