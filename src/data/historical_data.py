@@ -910,6 +910,11 @@ def players_scorecard_from_tournament(url):
                 else:
                     print(f"Number of tables {len(tourn_tables)} in url {url}")
 
+        else:
+            h_page = session.get(espn_home_url)
+
+            # return None
+
 
 def write_tournament_data(tournament_url):
     """Write historical tournament data to disk
@@ -1143,7 +1148,7 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2016)
+    tourn_errors = historical_data_runner(2015)
 
     if tourn_errors:
         for tourn in tourn_errors:
