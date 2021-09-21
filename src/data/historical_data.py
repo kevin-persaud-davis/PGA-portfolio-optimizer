@@ -57,6 +57,8 @@ def get_player_ids(t_body):
     if players is not None:
         for player in players:
             p_id_link = player.find("a")
+            # ensure that espn has player links on page
+            # if not, there is no player information
             if p_id_link is not None:
                 p_id = find_player_id(p_id_link["href"])
                 player_ids.append(p_id)
