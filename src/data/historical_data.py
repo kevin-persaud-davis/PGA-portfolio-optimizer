@@ -919,7 +919,7 @@ def players_scorecard_from_tournament(url):
                 # return None
     
 
-def write_tournament_data(tournament_url):
+def write_tournament_data(tournament_url, h_data_path="base"):
     """Write historical tournament data to disk
 
     Args:
@@ -945,7 +945,30 @@ def write_tournament_data(tournament_url):
     fn = t_id + ".csv"
     # Changed f_path for testing purpose and to not mix with already correct historical data
     # When ready change path back to config.RAW_HISTORICAL_DIR
-    f_path = str(Path(config.PGA_SEASON_2012, fn))
+    if h_data_path == "base":
+        f_path = str(Path(config.RAW_HISTORICAL_DIR, fn))
+    
+    elif h_data_path == "pga_season_2011":
+        f_path = str(Path(config.PGA_SEASON_2011, fn))
+
+    elif h_data_path == "pga_season_2012":
+        f_path = str(Path(config.PGA_SEASON_2012, fn))
+
+    elif h_data_path == "pga_season_2013":
+        f_path = str(Path(config.PGA_SEASON_2013, fn))
+
+    elif h_data_path == "pga_season_2014":
+        f_path = str(Path(config.PGA_SEASON_2014, fn))
+
+    elif h_data_path == "pga_season_2015":
+        f_path = str(Path(config.PGA_SEASON_2015, fn))
+
+    elif h_data_path == "pga_season_2016":
+        f_path = str(Path(config.PGA_SEASON_2016, fn))
+
+    else:
+        print(f"No directory called {h_data_path}. Used historical_player_data directory")
+        f_path = str(Path(config.RAW_HISTORICAL_DIR, fn))
     # fn = f_path + t_id + ".csv"
 
     with open (f_path, "w", newline="") as csvfile:
@@ -986,7 +1009,7 @@ def csv_tournament_data(tournament_urls):
                 results.append(None)
         return results
 
-def p_csv_tournament_data(tournament_urls):
+def p_csv_tournament_data(tournament_urls, f_path="base"):
     """Write all tournament data using csv file format.
     
     Args:
@@ -998,7 +1021,7 @@ def p_csv_tournament_data(tournament_urls):
     results = []
     with ProcessPoolExecutor(max_workers=8) as executor:
         for url in tournament_urls:
-            futures = executor.submit(write_tournament_data, url)
+            futures = executor.submit(write_tournament_data, url, f_path)
             futures_list.append(futures)
 
         for future in futures_list:
@@ -1012,13 +1035,15 @@ def p_csv_tournament_data(tournament_urls):
 
 
 @timeit
-def historical_data_runner(start, end=None):
+def historical_data_runner(start, end=None, f_path=None):
     """Get historical data over given pga season(s)
     
     Args:
         start (int) : beginning pga season
 
         end (int) : ending pga season, optional arg
+
+        f_path (str) : historical data directory to store data
 
     Returns:
         missed tournaments from to many server requests and failed connections
@@ -1036,8 +1061,13 @@ def historical_data_runner(start, end=None):
     tournaments_df["url"] = tournaments_df["tournament_id"].apply(lambda x: base_url + str(x))
 
     urls = tournaments_df["url"].tolist()
+
+    if f_path is not None:
     
-    results = p_csv_tournament_data(urls)
+        results = p_csv_tournament_data(urls, f_path)
+    
+    else:
+        results = p_csv_tournament_data(urls)
     
     missed_tourns = []
     tourn_counter = 0
@@ -1156,11 +1186,11 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2012)
+    tourn_errors = historical_data_runner(2011)
 
     if tourn_errors:
         for tourn in tourn_errors:
-            missed_result = write_tournament_data(tourn)
+            missed_result = write_tournament_data(tourn, "pga_season_2011")
             print(missed_result)
     
     # run_date_transformation()
