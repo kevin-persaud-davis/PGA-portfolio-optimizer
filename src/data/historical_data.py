@@ -826,6 +826,8 @@ def player_scorecard(scorecard_url):
 
                 assert len(rds_data) == 144
 
+                player_data = {**id_data, **rds_data}
+
             assert len(player_data) == 146
                 
             return player_data
@@ -847,74 +849,75 @@ def players_scorecard_from_tournament(url):
 
     # Redirect server request to mimic more realistic behavior
     # h_page = requests.get(espn_home_url)
+    if t_id != "1155":
 
-    with requests.Session() as session:
+        with requests.Session() as session:
 
-        time.sleep(3)
-        
-        # home_page = session.get(espn_home_url)
+            time.sleep(3)
+            
+            # home_page = session.get(espn_home_url)
 
-        page = session.get(base_url)
+            page = session.get(base_url)
 
-        if page.status_code == 200: 
-            print("good url: ", url)
-        
-            soup = BeautifulSoup(page.content, "lxml")
-            # Table's on webpage. index with -1 in case of playoff table
-            tourn_tables = soup.select("div.ResponsiveTable")
+            if page.status_code == 200: 
+                print("good url: ", url)
+            
+                soup = BeautifulSoup(page.content, "lxml")
+                # Table's on webpage. index with -1 in case of playoff table
+                tourn_tables = soup.select("div.ResponsiveTable")
 
-            if tourn_tables is not None:
+                if tourn_tables is not None:
 
-                if len(tourn_tables) == 1:
-                    
-                    tourn_table = tourn_tables[-1]
-                    tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
+                    if len(tourn_tables) == 1:
+                        
+                        tourn_table = tourn_tables[-1]
+                        tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
 
-                    tourn_players = get_player_ids(tourn_body)
-                    # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
-                    scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
-                    scorecard_back = "/tournamentId/"
-                    valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
-                                        for player in tourn_players]
+                        tourn_players = get_player_ids(tourn_body)
+                        # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
+                        scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
+                        scorecard_back = "/tournamentId/"
+                        valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
+                                            for player in tourn_players]
 
-                    # print(valid_player_urls)
-                    player_data = [player_scorecard(player) for player in valid_player_urls]
-                    print("\nNumber of players: ", len(player_data))
-                    return player_data
+                        # print(valid_player_urls)
+                        player_data = [player_scorecard(player) for player in valid_player_urls]
+                        print("\nNumber of players: ", len(player_data))
+                        return player_data
 
-                elif len(tourn_tables) == 2:
+                    elif len(tourn_tables) == 2:
 
-                    tourn_table = tourn_tables[-1]
-                    tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
+                        tourn_table = tourn_tables[-1]
+                        tourn_body = tourn_table.find("tbody", class_="Table__TBODY")
 
-                    tourn_players = get_player_ids(tourn_body)
-                    # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
-                    scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
-                    scorecard_back = "/tournamentId/"
-                    valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
-                                        for player in tourn_players]
+                        tourn_players = get_player_ids(tourn_body)
+                        # 'https://www.espn.com/golf/player/scorecards/_/id/11099tournamentId/401148233'
+                        scorecard_front = "https://www.espn.com/golf/player/scorecards/_/id/"
+                        scorecard_back = "/tournamentId/"
+                        valid_player_urls = [scorecard_front + player + scorecard_back + t_id 
+                                            for player in tourn_players]
 
-                    # print(valid_player_urls)
-                    player_data = [player_scorecard(player) for player in valid_player_urls]
-                    print("\nNumber of players: ", len(player_data))
-                    return player_data
+                        # print(valid_player_urls)
+                        player_data = [player_scorecard(player) for player in valid_player_urls]
+                        print("\nNumber of players: ", len(player_data))
+                        return player_data
 
-                elif len(tourn_tables) == 0:
-                    
-                    print(f"error with {url}")
-                    # To reset error on espn server
-                    page = session.get(espn_home_url)
-                    return url
-                    # return None
+                    elif len(tourn_tables) == 0:
+                        
+                        print(f"error with {url}")
+                        # To reset error on espn server
+                        page = session.get(espn_home_url)
+                        return url
+                        # return None
 
-                else:
-                    print(f"Number of tables {len(tourn_tables)} in url {url}")
+                    else:
+                        print(f"Number of tables {len(tourn_tables)} in url {url}")
 
-        else:
-            h_page = session.get(espn_home_url)
+            else:
+                h_page = session.get(espn_home_url)
 
-            # return None
-
+                # return None
+    
 
 def write_tournament_data(tournament_url):
     """Write historical tournament data to disk
@@ -942,14 +945,19 @@ def write_tournament_data(tournament_url):
     fn = t_id + ".csv"
     # Changed f_path for testing purpose and to not mix with already correct historical data
     # When ready change path back to config.RAW_HISTORICAL_DIR
-    f_path = str(Path(config.PGA_SEASON_2014, fn))
+    f_path = str(Path(config.PGA_SEASON_2012, fn))
     # fn = f_path + t_id + ".csv"
 
     with open (f_path, "w", newline="") as csvfile:
-         writer = DictWriter(csvfile, fieldnames=fields)
-         writer.writeheader()
+        writer = DictWriter(csvfile, fieldnames=fields)
+        writer.writeheader()
+         
+        if tourn_data is not None:
 
-         writer.writerows(tourn_data)
+            writer.writerows(tourn_data)
+        else:
+            print(f"The tourn data is None: {tourn_data}")
+    
 
     msg = f"Finished {t_id}"
     return msg
@@ -1148,7 +1156,7 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2014)
+    tourn_errors = historical_data_runner(2012)
 
     if tourn_errors:
         for tourn in tourn_errors:
