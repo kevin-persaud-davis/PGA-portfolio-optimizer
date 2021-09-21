@@ -99,7 +99,8 @@ def get_espn_tournaments(start, end=None, all_tournaments=False):
     if all_tournaments:
         pass
     else:
-        valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_tournaments_2017_2020.csv"))
+        # change path to point to 2011 to 2016 espn tournaments
+        valid_tournaments_path = str(Path(config.TOURNAMENTS_DIR, "valid_espn_tournaments_2011_2016.csv"))
         df = pd.read_csv(valid_tournaments_path,  date_parser=["date"])
 
     if end is not None:
