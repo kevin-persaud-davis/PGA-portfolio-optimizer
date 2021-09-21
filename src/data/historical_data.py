@@ -849,7 +849,7 @@ def players_scorecard_from_tournament(url):
 
     # Redirect server request to mimic more realistic behavior
     # h_page = requests.get(espn_home_url)
-    if t_id != "1155":
+    if (t_id != "1155") and (t_id != "995"):
 
         with requests.Session() as session:
 
@@ -1186,7 +1186,7 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2011)
+    tourn_errors = historical_data_runner(2011, f_path="pga_season_2011")
 
     if tourn_errors:
         for tourn in tourn_errors:
