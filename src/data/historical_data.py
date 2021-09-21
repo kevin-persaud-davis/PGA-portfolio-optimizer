@@ -809,7 +809,22 @@ def player_scorecard(scorecard_url):
                 scorecard_data = handle_bad_page(id_data)
 
 
-            player_data = {**id_data, **scorecard_data}
+            if scorecard_data:
+
+                player_data = {**id_data, **scorecard_data}
+            else:
+                rd_1_data, rd_1_data_pts = missing_round("round_1")
+        
+                rd_2_data, rd_2_data_pts = missing_round("round_2")
+
+                rd_3_data, rd_3_data_pts = missing_round("round_3")
+                
+                rd_4_data, rd_4_data_pts = missing_round("round_4")
+
+                rds_data = {**rd_1_data, **rd_2_data, **rd_3_data, **rd_4_data,
+                            **rd_1_data_pts, **rd_2_data_pts, **rd_3_data_pts, **rd_4_data_pts}
+
+                assert len(rds_data) == 144
 
             assert len(player_data) == 146
                 
