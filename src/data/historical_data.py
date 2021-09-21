@@ -942,7 +942,7 @@ def write_tournament_data(tournament_url):
     fn = t_id + ".csv"
     # Changed f_path for testing purpose and to not mix with already correct historical data
     # When ready change path back to config.RAW_HISTORICAL_DIR
-    f_path = str(Path(config.PGA_SEASON_2015, fn))
+    f_path = str(Path(config.PGA_SEASON_2014, fn))
     # fn = f_path + t_id + ".csv"
 
     with open (f_path, "w", newline="") as csvfile:
@@ -1148,7 +1148,7 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2015)
+    tourn_errors = historical_data_runner(2014)
 
     if tourn_errors:
         for tourn in tourn_errors:
