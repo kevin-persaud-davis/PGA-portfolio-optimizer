@@ -312,29 +312,31 @@ def espn_season_schedule(season_url):
         collection of espn tournament data
     """
     
-    page = requests.get(season_url)
-    soup = BeautifulSoup(page.content, "html.parser")
+    with requests.Session() as session:
 
-    season_table = soup.select("div.ResponsiveTable")
-    if season_table is not None:
-        season_body = season_table[0].find("tbody", class_="Table__TBODY")
+        page = session.get(season_url)
+        soup = BeautifulSoup(page.content, "html.parser")
 
-    tournament_data = []
-    
-    tournaments = season_body.find_all("div", class_="eventAndLocation__innerCell")
-    
-    if tournaments is not None:
-        for tournament in tournaments:
-            tournament_url = tournament.find("a")
-            if tournament_url:    
-                t_url = tournament_url["href"]
-                print(f"Fetching {t_url} data")
+        season_table = soup.select("div.ResponsiveTable")
+        if season_table is not None:
+            season_body = season_table[0].find("tbody", class_="Table__TBODY")
 
-                season_id = season_url[season_url.rfind("/")+1 :]
-                t_data = tournament_information(t_url, season_id)
-                tournament_data.append(t_data)
+        tournament_data = []
+        
+        tournaments = season_body.find_all("div", class_="eventAndLocation__innerCell")
+        
+        if tournaments is not None:
+            for tournament in tournaments:
+                tournament_url = tournament.find("a")
+                if tournament_url:    
+                    t_url = tournament_url["href"]
+                    print(f"Fetching {t_url} data")
 
-        return tournament_data
+                    season_id = season_url[season_url.rfind("/")+1 :]
+                    t_data = tournament_information(t_url, season_id)
+                    tournament_data.append(t_data)
+
+            return tournament_data
 
 def espn_schedule_runner():
     """Run schedule runner over range of pga seasons
