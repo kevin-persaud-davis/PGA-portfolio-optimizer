@@ -6,6 +6,19 @@ import config
 
 import pandas as pd
 import numpy as np
+from sklearn.pipeline import Pipeline
+from sklearn.base import BaseEstimator, TransformerMixin
+
+class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
+
+    def __init__(self):
+        pass
+
+    def fit(self, X, y=None):
+        return self
+    
+    def transform(self, X):
+        pass
 
 
 def player_win_date(df):
