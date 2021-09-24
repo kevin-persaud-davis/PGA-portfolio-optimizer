@@ -371,7 +371,11 @@ def espn_schedule_runner():
     df.to_csv(file_path, index=False)
 
 def get_espn_schedule(start, end=None):
-    """
+    """Get espn schedule over range of pga seasons and save data
+
+    Args:
+        start (int) : starting pga season
+        end (int) : ending pga season, optional arg
     
     """
     b_url = "https://www.espn.com/golf/schedule/_/season/"
