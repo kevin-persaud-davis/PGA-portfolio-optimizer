@@ -122,20 +122,52 @@ def run_placing_features(df, feat_dir=None, fname=None):
             df[f"last_top_{i}"] = place_date_df[f"last_top_{i}"]
             df[f"days_since_top_{i}"] = place_date_df[f"days_since_top_{i}"]
     
+def hole_scoring_percentages(p_round, score_type_1, score_type_2=None):
+    """Get hole scoring percentage for a given score type. Or
+    if two score types are given, find the ratio between them
+    
+    Args:
+        p_round (series or pd.DataFrame) : player round score(s)
+        
+        score_type_1 (int) : shooting score type
+        
+        score_type_2 (int) : shooting score type, optional argument
+        
+    Returns:
+        percentage for given scoring type(s)"""
 
+    
+    if score_type_2 is not None:
+        
+        s_type1_count = np.sum(np.where(p_round.values==score_type_1, 1, 0))
+        s_type2_count = np.sum(np.where(p_round.values==score_type_2, 1, 0))
+
+        if s_type2_count == 0:
+            return 0
+        else:
+            s_percentage = np.round(s_type1_count / s_type2_count, 5)
+            return s_percentage
+        
+    else:
+        
+        s_type_count = np.sum(np.where(p_round.values==score_type_1, 1, 0))
+        return s_type_count / p_round.shape[0]
 
 if __name__ == "__main__":
     
-    dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
-    df = pd.read_csv(dk_data_path, parse_dates=["date"])
+    # dk_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
+    # df = pd.read_csv(dk_data_path, parse_dates=["date"])
 
-    grouped_data_path = str(Path(config.GROUPED_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
+    # grouped_data_path = str(Path(config.GROUPED_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
     
-    df.to_csv(grouped_data_path, index=False)
+    # df.to_csv(grouped_data_path, index=False)
     
     # run_placing_features(df)
 
     # timeseries_data_path = str(Path(config.TIMESERIES_FRAMEWORK_DIR, "features_hpd_2017_2020.csv"))
     # df.to_csv(timeseries_data_path, index=False)
+
+    timeseries_feature_path = str(Path(config.TIMESERIES_FRAMEWORK_DIR, "train_dataset_default.csv"))
+    df = pd.read_csv(timeseries_feature_path, parse_dates=["date"])
     
 
