@@ -13,6 +13,7 @@ MODEL_DIR = Path(PGA_DIR, "model")
 DATA_DIR = Path(PGA_DIR, "data")
 
 RAW_DATA_DIR = Path(DATA_DIR, "raw")
+RAW_TOURNAMENTS_DIR = Path(RAW_DATA_DIR, "tournaments")
 RAW_HISTORICAL_DIR = Path(RAW_DATA_DIR, "historical_player_data")
 RAW_HISTORICAL_PRICES = Path(RAW_DATA_DIR, "historical_prices")
 PGA_SEASON_2011_2016 = Path(RAW_HISTORICAL_DIR, "pga_seasons_2011_2016")
