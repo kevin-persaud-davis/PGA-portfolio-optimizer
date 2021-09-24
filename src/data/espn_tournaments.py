@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
+
 def tournament_name(tourn_meta):
     """Find tournament name
 
@@ -506,6 +507,16 @@ def alter_tournament_names(df, fname=None):
     df.replace("The ZOZO CHAMPIONSHIP", "ZOZO CHAMPIONSHIP", inplace=True)
 
     if fname is not None:
+        a_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, fname))
+
+        df.to_csv(a_tourn_path, index=False)
+    
+    else:
+        seasons.sort()
+        b_season = seasons[0]
+        e_season = seasons[-1]
+        fname = f"updated_espn_tournaments_{b_season}_{e_season}.csv"
+
         a_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, fname))
 
         df.to_csv(a_tourn_path, index=False)
