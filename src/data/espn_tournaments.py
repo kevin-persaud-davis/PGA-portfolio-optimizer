@@ -315,28 +315,32 @@ def espn_season_schedule(season_url):
     with requests.Session() as session:
 
         page = session.get(season_url)
-        soup = BeautifulSoup(page.content, "html.parser")
+        if page.status_code == 200:
+                
+            soup = BeautifulSoup(page.content, "html.parser")
 
-        season_table = soup.select("div.ResponsiveTable")
-        if season_table is not None:
-            season_body = season_table[0].find("tbody", class_="Table__TBODY")
+            season_table = soup.select("div.ResponsiveTable")
+            if season_table is not None:
+                season_body = season_table[0].find("tbody", class_="Table__TBODY")
 
-        tournament_data = []
-        
-        tournaments = season_body.find_all("div", class_="eventAndLocation__innerCell")
-        
-        if tournaments is not None:
-            for tournament in tournaments:
-                tournament_url = tournament.find("a")
-                if tournament_url:    
-                    t_url = tournament_url["href"]
-                    print(f"Fetching {t_url} data")
+            tournament_data = []
+            
+            tournaments = season_body.find_all("div", class_="eventAndLocation__innerCell")
+            
+            if tournaments is not None:
+                for tournament in tournaments:
+                    tournament_url = tournament.find("a")
+                    if tournament_url:    
+                        t_url = tournament_url["href"]
+                        print(f"Fetching {t_url} data")
 
-                    season_id = season_url[season_url.rfind("/")+1 :]
-                    t_data = tournament_information(t_url, season_id)
-                    tournament_data.append(t_data)
+                        season_id = season_url[season_url.rfind("/")+1 :]
+                        t_data = tournament_information(t_url, season_id)
+                        tournament_data.append(t_data)
 
-            return tournament_data
+                return tournament_data
+        else:
+            print(f"Error retrieving page. page status code: {page.status_code}")
 
 def espn_schedule_runner():
     """Run schedule runner over range of pga seasons
