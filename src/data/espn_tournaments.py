@@ -370,7 +370,7 @@ def espn_schedule_runner():
 
     df.to_csv(file_path, index=False)
 
-def get_espn_schedule(start, end=None):
+def get_espn_schedule(start, end=None, data_dir="raw_tournaments"):
     """Get espn schedule over range of pga seasons and save data
 
     Args:
@@ -381,11 +381,30 @@ def get_espn_schedule(start, end=None):
     b_url = "https://www.espn.com/golf/schedule/_/season/"
     if end is not None:
         pga_season_urls = [b_url + str(season) for season in range(start, end+1)]
-        file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}_{end}.csv"))
+        
+        if data_dir == "raw_tournaments":
+            file_path = str(Path(config.RAW_TOURNAMENTS_DIR, f"espn_tournaments_{start}_{end}.csv"))
+        
+        elif data_dir == "raw":
+             file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}_{end}.csv"))
+            
+        else:
+            print(f"Did not give valid tournament data directory. Tournaments will be saved in\
+                RAW_DATA_DIR.\n")
+            file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}_{end}.csv"))
 
     else:
         pga_season_urls = [f"{b_url}{start}"]
-        file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}.csv"))
+        if data_dir == "raw_tournaments":
+            file_path = str(Path(config.RAW_TOURNAMENTS_DIR, f"espn_tournaments_{start}_{end}.csv"))
+        
+        elif data_dir == "raw":
+             file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}_{end}.csv"))
+            
+        else:
+            print(f"Did not give valid tournament data directory. Tournaments will be saved in\
+                RAW_DATA_DIR.\n")
+            file_path = str(Path(config.RAW_DATA_DIR, f"espn_tournaments_{start}_{end}.csv"))
 
     pga_tournament_data = [espn_season_schedule(pga_season) for pga_season in pga_season_urls]
 
