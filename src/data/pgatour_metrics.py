@@ -407,29 +407,69 @@ if __name__ == "__main__":
 
     pga_seasons = espn_tourns.season_id.unique()
     start_season, end_season = pga_seasons[-1], pga_seasons[0]
+
+    # mapped_tourns_list = find_tourn_mapping(pgatour_df, altered_tourn_df, start_season, end_season)
+    # mapped_tourns_df = pd.concat(mapped_tourns_list)
     
+    # mapped_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "mapped_tournament_ids_2017_2020.csv"))
+    # mapped_tourns_df.to_csv(mapped_tourn_path, index=False)
+    
+    # ------------------------
+    # PGATOUR metrics process
+    # ------------------------
     # SG: Total
-    sg_total = "https://www.pgatour.com/stats/stat.02675.html"
+    # sg_total = "https://www.pgatour.com/stats/stat.02675.html"
 
     # SG: Tee-to-Green
-    sg_ttg = "https://www.pgatour.com/stats/stat.02674.html"
+    # sg_ttg = "https://www.pgatour.com/stats/stat.02674.html"
 
     # SG: Approach
-    sg_approach = "https://www.pgatour.com/content/pgatour/stats/stat.02568.html"
+    # sg_approach = "https://www.pgatour.com/content/pgatour/stats/stat.02568.html"
 
-    pga_metrics = [sg_total, sg_ttg, sg_approach]
+    # Greens in Regulation Percentage
+    gir_percentage = "https://www.pgatour.com/stats/stat.103.html"
 
-    # for metric in pga_metrics:
-    #     run_pgatour_metrics(metric, start_season, end_season)
+    # Greens in Regulation Percentage {200+, 150-175, <125, 100+, 75-100}
+    gir_200 = "https://www.pgatour.com/stats/stat.326.html"
+    gir_175_200 = "https://www.pgatour.com/stats/stat.327.html"
+    gir_150_175 = "https://www.pgatour.com/stats/stat.328.html"
+    gir_125_150 = "https://www.pgatour.com/stats/stat.329.html"
+    gir_lt_125 = "https://www.pgatour.com/stats/stat.330.html"
+    gir_100_125 = "https://www.pgatour.com/stats/stat.077.html"
+    gir_100 = "https://www.pgatour.com/stats/stat.02332.html"
+    gir_lt_100 = "https://www.pgatour.com/stats/stat.02330.html"
+    gir_75_100 = "https://www.pgatour.com/stats/stat.078.html"
+    gir_lt_75 = "https://www.pgatour.com/stats/stat.079.html"
+    # greens or fringe in regulation
+    gofir = "https://www.pgatour.com/stats/stat.02437.html"
+    gir_fairway = "https://www.pgatour.com/stats/stat.190.html"
+    # GIR other than fairway
+    gir_ot_fairway = "https://www.pgatour.com/stats/stat.199.html"
+    gir_fairway_bunker = "https://www.pgatour.com/stats/stat.02434.html"
+
+
+    pga_metrics = [gir_percentage, 
+                gir_200,
+                gir_175_200,
+                gir_150_175,
+                gir_125_150,
+                gir_lt_125,
+                gir_100_125,
+                gir_100,
+                gir_lt_100,
+                gir_75_100,
+                gir_lt_75,
+                gofir,
+                gir_fairway,
+                gir_ot_fairway,
+                gir_fairway_bunker
+                ]
+
+    for metric in pga_metrics:
+        run_pgatour_metrics(metric, start_season, end_season)
     
-    mapped_tourns_list = find_tourn_mapping(pgatour_df, altered_tourn_df, start_season, end_season)
-    mapped_tourns_df = pd.concat(mapped_tourns_list)
+
     
-    mapped_tourn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "mapped_tournament_ids_2017_2020.csv"))
-    mapped_tourns_df.to_csv(mapped_tourn_path, index=False)
-
-
-    # pgatour metrics process
     # b_url = "https://www.pgatour.com/content/pgatour/stats/stat.02568.html"
     # pga_metric_df = get_pgatour_statistic(b_url, 2018, 2020)
 
