@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 import sys
+from typing import Set
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
 import config
 from time import strptime
@@ -377,6 +378,7 @@ def get_espn_schedule(start, end=None, data_dir="raw_tournaments"):
     Args:
         start (int) : starting pga season
         end (int) : ending pga season, optional arg
+        data_dir (str) : data directory to save tournaments
     
     """
     b_url = "https://www.espn.com/golf/schedule/_/season/"
@@ -524,14 +526,46 @@ def alter_tournament_names(df, fname=None):
 
 if __name__ == "__main__":
     
-    espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2011_2016.csv"))
+    # espn_tournaments_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2011_2016.csv"))
     
-    espn_df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
+    # espn_df = pd.read_csv(espn_tournaments_path, parse_dates=["date"])
 
-    valid_espn_df = filter_valid_tournaments(espn_df)
+    # valid_espn_df = filter_valid_tournaments(espn_df)
 
-    v_tourn_path = str(Path(config.TOURNAMENTS_DIR, "valid_espn_tournaments_2011_2016.csv"))
-    valid_espn_df.to_csv(v_tourn_path, index=False)
+    # v_tourn_path = str(Path(config.TOURNAMENTS_DIR, "valid_espn_tournaments_2011_2016.csv"))
+    # valid_espn_df.to_csv(v_tourn_path, index=False)
+
+    parser = argparse.ArgumentParser(description="Run espn schedule runner process")
+    parser.add_argument("start", help="starting season for collection of espn tournaments",
+                        type=int)
+
+    parser.add_argument("")
+
+    parser.add_argument("-r", "--range", action="store_true",
+                        help="range of pga season tournaments already collected")
+
+    
+    args = parser.parse_args()
+    print(f"Tournaments will be collected from the start of the {args.start} pga season\n")
+
+    if args.range:
+        espn_t_path1 = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2011_2016.csv"))
+        espn_t_path2 = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
+
+        df1 = pd.read_csv(espn_t_path1, parse_dates=["date"])
+        df2 = pd.read_csv(espn_t_path2, parse_dates=["date"])
+
+        df1_seasons = df1.season_id.unique().tolist()
+        df2_seasons = df2.season_id.unique().tolist()
+
+        combined_seasons = df1_seasons + df2_seasons
+        combined_seasons.sort()
+
+        print(f"Range of tournaments already collected {combined_seasons}")
+
+        
+
+
 
     # valid_tournaments_df = filter_valid_tournaments(df)
 
