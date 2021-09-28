@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 import sys
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
@@ -342,7 +343,7 @@ def fantasy_map_runner(r_fpath, w_fpath="historical_player_data"):
         r_fpath (str) : read file path for dataset
 
         w_fpath (str) : write file path for dataset, optional argument
-        
+
     """
     f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
     
@@ -371,5 +372,7 @@ def fantasy_map_runner(r_fpath, w_fpath="historical_player_data"):
 if __name__ == "__main__":
 
     fantasy_map_runner()
+
+     
 
     
