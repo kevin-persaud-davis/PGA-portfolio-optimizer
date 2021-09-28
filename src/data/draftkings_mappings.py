@@ -339,7 +339,7 @@ def fantasy_map_runner():
     """Run draftkings fantansy transformation mappings
     """
     f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
-    dk_fantasy_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
+    
     historical_data_df = pd.read_csv(f_path, parse_dates=["date"])
 
     tournament_position_rank(historical_data_df)
@@ -358,6 +358,7 @@ def fantasy_map_runner():
     under70(historical_data_df)
     total_fantasy_points(historical_data_df)
 
+    dk_fantasy_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
     historical_data_df.to_csv(dk_fantasy_path, index=False)
 
 
