@@ -1190,12 +1190,12 @@ def run_date_transformation():
 
 if __name__ == "__main__":
 
-    tourn_errors = historical_data_runner(2011, f_path="pga_season_2011")
+    # tourn_errors = historical_data_runner(2011, f_path="pga_season_2011")
 
-    if tourn_errors:
-        for tourn in tourn_errors:
-            missed_result = write_tournament_data(tourn, "pga_season_2011")
-            print(missed_result)
+    # if tourn_errors:
+    #     for tourn in tourn_errors:
+    #         missed_result = write_tournament_data(tourn, "pga_season_2011")
+    #         print(missed_result)
     
 
     merge_tournaments("*.csv", "hpd_2011_2016.csv")
