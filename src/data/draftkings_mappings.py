@@ -335,8 +335,14 @@ def total_fantasy_points(df):
     f_cols = [col for col in df.columns.tolist() if col.find("fantasy_") != -1]
     df["fantasy_total_points"] = df[f_cols].sum(axis=1)
 
-def fantasy_map_runner():
+def fantasy_map_runner(r_fpath, w_fpath="historical_player_data"):
     """Run draftkings fantansy transformation mappings
+
+    Args:
+        r_fpath (str) : read file path for dataset
+
+        w_fpath (str) : write file path for dataset, optional argument
+        
     """
     f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
     
