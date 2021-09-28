@@ -1151,7 +1151,7 @@ def combine_files(root, pattern=None):
 
     return combined_files
 
-def merge_tournaments(f_pattern, f_name):
+def merge_tournaments(f_pattern, f_name, f_path="raw_historical"):
     """Merge espn tournmants
     
     Args:
@@ -1160,7 +1160,11 @@ def merge_tournaments(f_pattern, f_name):
         f_name (str) : file name for merged tournaments
         
     """
-    f_path = str(config.RAW_HISTORICAL_DIR)
+    if f_path == "seasons_2011_2016":
+        f_path = str(config.PGA_SEASON_2011_2016)
+    else:
+        f_path = str(config.RAW_HISTORICAL_DIR)
+
     historical_data = combine_files(f_path, f_pattern)
 
     processed_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, f_name))
@@ -1193,6 +1197,10 @@ if __name__ == "__main__":
             missed_result = write_tournament_data(tourn, "pga_season_2011")
             print(missed_result)
     
+
+    merge_tournaments("*.csv", "hpd_2011_2016.csv")
+
+
     # run_date_transformation()
 
     
