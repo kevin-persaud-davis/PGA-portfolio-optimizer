@@ -169,5 +169,35 @@ if __name__ == "__main__":
 
     timeseries_feature_path = str(Path(config.TIMESERIES_FRAMEWORK_DIR, "train_dataset_default.csv"))
     df = pd.read_csv(timeseries_feature_path, parse_dates=["date"])
+
+
+    # df["made_cut"] = np.where(df["make_cut"] == True, 1, 0)
+    # df["finished_r1"] = np.where(df["complete_r1"] == True, 1, 0)
+    # df["finished_r2"] = np.where(df["complete_r2"] == True, 1, 0)
+    # df["finished_r3"] = np.where(df["complete_r3"] == True, 1, 0)
+    # df["finished_r4"] = np.where(df["complete_r4"] == True, 1, 0)
+
+
+    # fantasy_hole_pt_cols = df.loc[:, "f_pts_1_1":"f_pts_4_18"].columns.tolist()
+
+
+    # df["birdie_to_par_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 3, 0.5), axis=1)
+    # df["birdie_to_bogey_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 3, -0.5), axis=1)
+    # df["birdie_to_double_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 3, -1), axis=1)
+
+    # df["eagle_to_par_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 8, 0.5), axis=1)
+    # df["eagle_to_bogey_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 8, -0.5), axis=1)
+    # df["eagle_to_double_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 8, -1), axis=1)
+
+    # df["par_to_birdie_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 0.5, 3), axis=1)
+    # df["par_to_bogey_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 0.5, -0.5), axis=1)
+    # df["par_to_double_ratio"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 0.5, -1), axis=1)
+
+    # df["eagle_pct"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 8), axis=1)
+    # df["birdie_pct"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 3), axis=1)
+    # df["par_pct"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, 0.5), axis=1)
+    # df["bogey_pct"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, -0.5), axis=1)
+    # df["double_pct"] = df[fantasy_hole_pt_cols].apply(lambda x: hole_scoring_percentages(x, -1), axis=1)
+
     
 
