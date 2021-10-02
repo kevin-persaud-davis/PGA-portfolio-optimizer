@@ -121,7 +121,6 @@ def main():
     # arbitrary selection of tournament to test. More robust functionality will be provided
     # after the implementation for one tournament is correct
 
-    print(feature_df.head())
 
     current_week_tournament = [401148238, 401148239]
     # Split data between historical and upcoming tournament
@@ -137,11 +136,10 @@ def main():
     historical_estimate_cols = ["player_id", "tournament_id", "standardized_fantasy_total_points", "expected_value"]
     historical_competitors_df = historical_df[historical_estimate_cols][historical_df.player_id.isin(current_competitors)]
 
-    competitors_std = historical_competitors_df[["player_id", "standardized_fantasy_total_points"]].groupby("player_id").agg(
-        std = pd.NamedAgg(column="standardized_fantasy_total_points", aggfunc="std"),
-    )
+    competitors_std, m_pids = get_competitors_std(historical_competitors_df[["player_id", "standardized_fantasy_total_points"]])
 
-    print(competitors_std)
+    historical_competitors_df = historical_competitors_df[~(historical_competitors_df.player_id.isin(m_pids))]
+
 
     input_matrix = historical_competitors_df[historical_estimate_cols[:-1]].pivot(index="tournament_id",
                                                                                 columns="player_id", 
