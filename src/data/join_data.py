@@ -40,6 +40,29 @@ def read_file(file_name, f_path):
 
     return df
 
+def create_espn_tid_col(df):
+    """create tournament id mapping for espn tournaments
+    
+    Args:
+        df (pd.DataFrame): pgatour metrics dataframe
+
+    Returns:
+    
+    """
+    espn_path = str(Path(config.MAPPED_TOURNAMENTS_DIR, "mapped_tournament_ids_2017_2020.csv"))
+
+    espn_df = pd.read_csv(espn_path)
+
+    df_merged = pd.merge(df, espn_df,
+            how="left",
+            left_on=["pga_tourn_id", "pga_season_id"],
+            right_on=["tournament_id_pgatour","season_id"])
+
+    print(df_merged)
+
+    return df_merged
+
+
 def main():
     
     mypath = str(Path(config.RAW_PGA_METRICS_DIR))
@@ -58,6 +81,8 @@ def main():
                                             "pga_season_id",
                                             "PLAYER_NAME"]), frames)
 
+
+    create_espn_tid_col(df_merged)
 
     # save_path = str(Path(config.PROCESSED_PGA_METRICS_DIR, "pgatour_metrics_2017_2020.csv"))
 
