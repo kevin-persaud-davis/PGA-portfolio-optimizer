@@ -80,7 +80,7 @@ def rolling_mean_score(scoring, days=2):
     Returns:
         rolling mean score over given days
     """
-    scores = scoring.groupby("player_id")["fantasy_total_points"].rolling(days, min_periods=days).mean()
+    scores = scoring.groupby("player_id")["standardized_fantasy_total_points"].rolling(days, min_periods=days).mean()
     scores = scores.reset_index().set_index("level_1").drop(columns="player_id")
     return scores
 
@@ -105,6 +105,7 @@ def main():
     # arbitrary selection of tournament to test. More robust functionality will be provided
     # after the implementation for one tournament is correct
 
+    print(feature_df.head())
 
     current_week_tournament = [401148239]
     # Split data between historical and upcoming tournament
@@ -113,25 +114,28 @@ def main():
 
 
     # ML estimates will be used in the future instead of historical averages
-    historical_df["expected_value"] = rolling_mean_score(historical_df[["player_id", "fantasy_total_points"]])
+    historical_df["expected_value"] = rolling_mean_score(historical_df[["player_id", "standardized_fantasy_total_points"]])
 
     current_competitors = check_competitors_historical(historical_df[["player_id"]], current_tourn_df)
 
-    historical_estimate_cols = ["player_id", "tournament_id", "fantasy_total_points", "expected_value"]
+    historical_estimate_cols = ["player_id", "tournament_id", "standardized_fantasy_total_points", "expected_value"]
     historical_competitors_df = historical_df[historical_estimate_cols][historical_df.player_id.isin(current_competitors)]
 
-    competitors_std = historical_competitors_df[["player_id", "fantasy_total_points"]].groupby("player_id").agg(
-        std = pd.NamedAgg(column="fantasy_total_points", aggfunc="std"),
+    competitors_std = historical_competitors_df[["player_id", "standardized_fantasy_total_points"]].groupby("player_id").agg(
+        std = pd.NamedAgg(column="standardized_fantasy_total_points", aggfunc="std"),
     )
+
+    print(competitors_std)
 
     input_matrix = historical_competitors_df[historical_estimate_cols[:-1]].pivot(index="tournament_id",
                                                                                 columns="player_id", 
-                                                                                values="fantasy_total_points").fillna(0)
+                                                                                values="standardized_fantasy_total_points").fillna(0)
     
     corr = input_matrix.corr()
 
     np.fill_diagonal(corr.values, competitors_std)
 
+    print(corr)
     # Now that all the competitors are valid, I can compute the std of each player before dropping rows to make 
     # dispersion measurement more robust (more data points)
 
