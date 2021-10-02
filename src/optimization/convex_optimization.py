@@ -95,6 +95,22 @@ def get_tournament_competitors(current_df):
     """
     return current_df["player_id"].unique()
 
+def get_competitors_std(player_scores_df):
+    """Get players historical standard deviation from realized scores
+    
+    Args:
+        player_scores_df (pd.DataFrame) : historical players standardized fantasy total points
+
+    Returns:
+        historical standard deviation and player id's of NA values
+    """
+    competitors_std = player_scores_df[["player_id", "standardized_fantasy_total_points"]].groupby("player_id").agg(
+        std = pd.NamedAgg(column="standardized_fantasy_total_points", aggfunc="std"),
+    )
+
+    missing_values_pids = competitors_std[competitors_std["std"].isna()].index
+
+    return competitors_std, missing_values_pids
 
 def main():
     
@@ -107,7 +123,7 @@ def main():
 
     print(feature_df.head())
 
-    current_week_tournament = [401148239]
+    current_week_tournament = [401148238, 401148239]
     # Split data between historical and upcoming tournament
     current_tourn_df = feature_df[feature_df["tournament_id"] == current_week_tournament[0]].copy()
     historical_df = feature_df[~(feature_df["tournament_id"] == current_week_tournament[0])].copy()
