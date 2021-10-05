@@ -58,7 +58,7 @@ def create_espn_tid_col(df):
             left_on=["pga_tourn_id", "pga_season_id"],
             right_on=["tournament_id_pgatour","season_id"])
 
-    print(df_merged)
+    df_merged = df_merged.drop(columns=["tournament_id_pgatour", "tournament_name"])
 
     return df_merged
 
@@ -82,7 +82,7 @@ def main():
                                             "PLAYER_NAME"]), frames)
 
 
-    create_espn_tid_col(df_merged)
+    df_merged = create_espn_tid_col(df_merged)
 
     # save_path = str(Path(config.PROCESSED_PGA_METRICS_DIR, "pgatour_metrics_2017_2020.csv"))
 
