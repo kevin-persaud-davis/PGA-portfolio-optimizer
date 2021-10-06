@@ -349,12 +349,15 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     espn_path = str(Path(config.TOURNAMENTS_DIR, "valid_espn_tournaments_2011_2016.csv"))
     
     espn_df = pd.read_csv(espn_path, parse_dates=["date"])
-    historical_data_df = pd.read_csv(f_path, parse_dates=["date"])
+    historical_df = pd.read_csv(f_path, parse_dates=["date"])
 
     season_range = espn_df[(espn_df.season_id >= start) & (espn_df.season_id <= end)]
     tournament_ids = season_range.tournament_id.unique()
     
-    tournament_position_rank(historical_data_df)
+    f_mapper = FantasyMapper(historical_df, tournament_ids)
+    f_mapper.get_cut()
+    
+    # tournament_position_rank(historical_data_df)
 
     # handle_placing_ties(historical_data_df)
     # places_df = place_pts()
@@ -379,6 +382,12 @@ class FantasyMapper():
     def __init__(self, df, tid_list):
         self.df = df[df.tournament_id.isin(tid_list)]
 
+    def get_cut(self):
+        X = np.where((self.df.round_3_18 > 0) & (self.df.round_4_18 > 0),
+                1,
+                0)
+        
+        
     
 
 
