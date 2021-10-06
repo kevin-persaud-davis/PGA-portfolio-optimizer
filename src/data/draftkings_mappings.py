@@ -336,7 +336,7 @@ def total_fantasy_points(df):
     f_cols = [col for col in df.columns.tolist() if col.find("fantasy_") != -1]
     df["fantasy_total_points"] = df[f_cols].sum(axis=1)
 
-def fantasy_map_runner(w_fpath="historical"):
+def fantasy_map_runner(start, end, w_fpath="historical"):
     """Run draftkings fantansy transformation mappings
 
     Args:
