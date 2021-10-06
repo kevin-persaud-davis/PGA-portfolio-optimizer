@@ -1160,16 +1160,18 @@ def merge_tournaments(f_pattern, f_name, f_path="raw_historical"):
         f_name (str) : file name for merged tournaments
         
     """
-    if f_path == "seasons_2011_2016":
-        f_path = str(config.PGA_SEASON_2011_2016)
-    else:
-        f_path = str(config.RAW_HISTORICAL_DIR)
+    file_p_dict = {"raw_historical": str(config.RAW_HISTORICAL),
+                "seasons_2011_2016": str(config.PGA_SEASON_2011_2016),
+                "raw_historical_dir": str(config.RAW_HISTORICAL_DIR)}
 
-    historical_data = combine_files(f_path, f_pattern)
+    
+    full_path = file_p_dict[f_path]
+    historical_data = combine_files(full_path, f_pattern)
 
-    processed_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, f_name))
+    
+    # processed_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, f_name))
 
-    historical_data.to_csv(processed_data_path, index=False)
+    # historical_data.to_csv(processed_data_path, index=False)
 
 
 def run_date_transformation():
@@ -1200,7 +1202,7 @@ if __name__ == "__main__":
 
     merge_tournaments("*.csv", "hpd_2011_2016.csv")
 
-
+    # Need to update function to run on different files
     # run_date_transformation()
 
     
