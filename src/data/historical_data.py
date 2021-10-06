@@ -2,8 +2,7 @@ from pathlib import Path, PurePath
 import os
 from fnmatch import fnmatch
 import sys
-
-from seaborn.categorical import barplot
+import csv
 
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
 import config
@@ -1149,7 +1148,9 @@ def combine_files(root, pattern=None):
         files = [PurePath(path, name) for path, subdirs, files in os.walk(root) for name in files]
         combined_files = pd.concat([pd.read_csv(f) for f in files])
 
-    return combined_files
+    run_date_transformation(combined_files)
+
+    return combined_files.sort_values(by="date")
 
 def merge_tournaments(f_pattern, f_name, f_path="raw_historical"):
     """Merge espn tournmants
@@ -1163,31 +1164,33 @@ def merge_tournaments(f_pattern, f_name, f_path="raw_historical"):
     file_p_dict = {"raw_historical": str(config.RAW_HISTORICAL),
                 "seasons_2011_2016": str(config.PGA_SEASON_2011_2016),
                 "raw_historical_dir": str(config.RAW_HISTORICAL_DIR)}
-
-    
     full_path = file_p_dict[f_path]
-    historical_data = combine_files(full_path, f_pattern)
-
     
-    # processed_data_path = str(Path(config.PROCESSED_HISTORICAL_DIR, f_name))
+    historical_data = combine_files(full_path, f_pattern)
+    
+    w_f_path = str(Path(config.PROCESSED_HISTORICAL, f_name))
+    if os.path.isfile(w_f_path):
+        # file exists so no need for headers
+        historical_data.to_csv(w_f_path, mode="a", header=False, index=False, date_format="%Y-%m-%d")
+    else:
+        historical_data.to_csv(w_f_path, mode="a", header=True, index=False, date_format="%Y-%m-%d")
 
-    # historical_data.to_csv(processed_data_path, index=False)
 
-
-def run_date_transformation():
+def run_date_transformation(df):
     """Run and save date transformations for historical player data
     
+    Args:
+        df (pd.DataFrame) : historical player data
     """
-    f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
-    historical_data_df = pd.read_csv(f_path)
+    # f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
+    # historical_data_df = pd.read_csv(f_path)
 
-    espn_tourn_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2017_2020.csv"))
-
+    espn_tourn_path = str(Path(config.RAW_DATA_DIR, "espn_tournaments_2011_2016.csv"))
     espn_tourns_df = pd.read_csv(espn_tourn_path, parse_dates=["date"])
 
-    tournament_date_col(historical_data_df, espn_tourns_df)
+    tournament_date_col(df, espn_tourns_df)
 
-    historical_data_df.to_csv(f_path)
+    # historical_data_df.to_csv(f_path)
 
 
 if __name__ == "__main__":
@@ -1200,10 +1203,8 @@ if __name__ == "__main__":
     #         print(missed_result)
     
 
-    merge_tournaments("*.csv", "hpd_2011_2016.csv")
+    merge_tournaments("*.csv", "hpd.csv")
 
-    # Need to update function to run on different files
-    # run_date_transformation()
 
     
     
