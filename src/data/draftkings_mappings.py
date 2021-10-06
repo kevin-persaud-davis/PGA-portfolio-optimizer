@@ -345,28 +345,41 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
         w_fpath (str) : write file path for dataset, optional argument
 
     """
-    f_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "hpd_2017_2020.csv"))
+    f_path = str(Path(config.PROCESSED_HISTORICAL, "hpd.csv"))
+    espn_path = str(Path(config.TOURNAMENTS_DIR, "valid_espn_tournaments_2011_2016.csv"))
     
+    espn_df = pd.read_csv(espn_path, parse_dates=["date"])
     historical_data_df = pd.read_csv(f_path, parse_dates=["date"])
 
+    season_range = espn_df[(espn_df.season_id >= start) & (espn_df.season_id <= end)]
+    tournament_ids = season_range.tournament_id.unique()
+    
     tournament_position_rank(historical_data_df)
 
-    handle_placing_ties(historical_data_df)
-    places_df = place_pts()
+    # handle_placing_ties(historical_data_df)
+    # places_df = place_pts()
 
-    map_placings(historical_data_df, places_df)
-    fantasy_hole_points(historical_data_df)
-    finished_rounds(historical_data_df)
+    # map_placings(historical_data_df, places_df)
+    # fantasy_hole_points(historical_data_df)
+    # finished_rounds(historical_data_df)
 
     
-    bogey_free_rounds(historical_data_df)
-    make_birdie_streak(historical_data_df)
-    hole_in_ones(historical_data_df)
-    under70(historical_data_df)
-    total_fantasy_points(historical_data_df)
+    # bogey_free_rounds(historical_data_df)
+    # make_birdie_streak(historical_data_df)
+    # hole_in_ones(historical_data_df)
+    # under70(historical_data_df)
+    # total_fantasy_points(historical_data_df)
 
-    dk_fantasy_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
-    historical_data_df.to_csv(dk_fantasy_path, index=False)
+    # dk_fantasy_path = str(Path(config.PROCESSED_HISTORICAL_DIR, "draftkings_hpd_2017_2020.csv"))
+    # historical_data_df.to_csv(dk_fantasy_path, index=False)
+
+
+class FantasyMapper():
+
+    def __init__(self, df, tid_list):
+        self.df = df[df.tournament_id.isin(tid_list)]
+
+    
 
 
 if __name__ == "__main__":
@@ -380,5 +393,7 @@ if __name__ == "__main__":
                         type=int)
     
     args = parser.parse_args()
+
+    fantasy_map_runner(args.start, args.end)
 
     
