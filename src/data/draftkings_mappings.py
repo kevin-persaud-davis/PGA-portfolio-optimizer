@@ -371,8 +371,14 @@ def fantasy_map_runner(r_fpath, w_fpath="historical_player_data"):
 
 if __name__ == "__main__":
 
-    fantasy_map_runner()
+    # fantasy_map_runner()
 
-     
-
+    parser = argparse.ArgumentParser(description="Draftkings fantasy point mapping transformation")
+    parser.add_argument("start", help="starting season for mapping process",
+                        type=int)
+    parser.add_argument("end", help="ending season for mapping process",
+                        type=int)
+    
+    args = parser.parse_args()
+    
     
