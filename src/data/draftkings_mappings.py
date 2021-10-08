@@ -386,6 +386,11 @@ class FantasyMapper():
         X = np.where((self.df.round_3_18 > 0) & (self.df.round_4_18 > 0),
                 1,
                 0)
+        return X
+
+    def make_cut(self):
+        cut_mask = self.get_cut()
+        self.df["made_cut"] = cut_mask
         
         
     
