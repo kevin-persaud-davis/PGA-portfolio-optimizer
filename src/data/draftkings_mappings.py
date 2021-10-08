@@ -388,7 +388,7 @@ class FantasyMapper():
                 0)
         return X
 
-    def make_cut(self):
+    def set_cut(self):
         cut_mask = self.get_cut()
         self.df["made_cut"] = cut_mask
         
