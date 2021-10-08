@@ -355,7 +355,9 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     tournament_ids = season_range.tournament_id.unique()
     
     f_mapper = FantasyMapper(historical_df, tournament_ids)
-    f_mapper.get_cut()
+    f_mapper.set_cut()
+
+    print(f_mapper.get_data())
     
     # tournament_position_rank(historical_data_df)
 
@@ -381,6 +383,9 @@ class FantasyMapper():
 
     def __init__(self, df, tid_list):
         self.df = df[df.tournament_id.isin(tid_list)]
+
+    def get_data(self):
+        return self.df
 
     def get_cut(self):
         X = np.where((self.df.round_3_18 > 0) & (self.df.round_4_18 > 0),
