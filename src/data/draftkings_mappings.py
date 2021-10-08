@@ -357,7 +357,8 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     f_mapper = FantasyMapper(historical_df, tournament_ids)
     f_mapper.set_cut()
 
-    print(f_mapper.get_data())
+    f_mapper.position_rank()
+
     
     # tournament_position_rank(historical_data_df)
 
@@ -396,9 +397,47 @@ class FantasyMapper():
     def set_cut(self):
         cut_mask = self.get_cut()
         self.df["made_cut"] = cut_mask
-        
-        
-    
+
+    def handle_place_ties(self):
+
+        winners = self.df[self.df["place"]==1].copy()
+        df_ties = winners[winners.tournament_id.duplicated(keep=False)].reset_index()
+        playoff_winners = df_ties.groupby("tournament_id").first()
+        new_totals = playoff_winners[["index", "total"]].reset_index(drop=True)
+
+        self.df["total"].iloc[new_totals["index"].values] = self.df["total"].iloc[new_totals["index"].values].apply(lambda x: x-1)
+        self.df["place"] = self.df.groupby("tournament_id")["total"].rank("min")
+
+    def position_rank(self):
+
+        col_start = self.df.columns.get_loc("round_1_1")
+        col_end = self.df.columns.get_loc("round_4_18") + 1
+
+        score_cols = self.df.columns[col_start:col_end]
+
+        self.df["total"] = np.where(self.df.made_cut, self.df[score_cols].sum(axis=1), np.nan)
+        self.df["place"] = self.df.groupby("tournament_id")["total"].rank("min")
+        # print(self.df.head())
+        self.handle_place_ties()
+
+
+# def handle_placing_ties(df):
+#     """Handle position ties for winners of tournaments
+
+#     Args:
+#         df (pd.Dataframe) : historical player data
+
+#     """
+#     winners = df[df["place"] == 1].copy()
+#     df_ties = winners[winners["tournament_id"].duplicated(keep=False)]
+#     df_ties.reset_index(inplace=True)
+
+#     playoff_winners = df_ties.groupby("tournament_id").first()
+#     new_totals = playoff_winners[["index", "total"]].reset_index(drop=True)
+
+#     df["total"].iloc[new_totals["index"].values] = df["total"].iloc[new_totals["index"].values].apply(lambda x: x-1) 
+#     # Redo place col
+#     df["place"] = df.groupby("tournament_id")["total"].rank("min")
 
 
 if __name__ == "__main__":
