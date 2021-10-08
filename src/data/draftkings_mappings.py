@@ -361,6 +361,8 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
 
     f_mapper.set_placing()
 
+    f_mapper.set_hole_points()
+    
     # tournament_position_rank(historical_data_df)
 
     # handle_placing_ties(historical_data_df)
@@ -534,6 +536,42 @@ class FantasyMapper():
 
         p_df = self.get_place_pts()
         self.map_placings(p_df)
+
+    def get_rd_cols(self, base_col):
+        """Make columns for holes in pga tournament
+
+        Args:
+            base_col (str) : base name for column
+
+        Returns:
+            columns for holes played in tournament, total of 72
+        """
+        cols = []
+        for rd in range(1,5):
+            rd_base = base_col + str(rd)
+            for hole in range(1,19):
+                rd_h_cols = rd_base + "_" + str(hole)
+                cols.append(rd_h_cols)
+        return cols
+    
+    def set_hole_points(self):
+        """Fantasy hole point mappings for player hole scores"""
+        hole_fantasy_pts = {"eagle": 8, "birdie": 3,"par": 0.5, "bogie": -0.5, "double": -1}
+        fantasy_pts_df = pd.DataFrame(list(hole_fantasy_pts.items()), columns=["hole_score", "points"])
+
+        rd_pts_start = "round_1_1_pts"
+        rd_pts_end = "round_4_18_pts"
+        fantasy_points_conditions = [
+            self.df.loc[:, rd_pts_start:rd_pts_end] == fantasy_pts_df.iloc[0,0],
+            self.df.loc[:, rd_pts_start:rd_pts_end] == fantasy_pts_df.iloc[1,0],
+            self.df.loc[:, rd_pts_start:rd_pts_end] == fantasy_pts_df.iloc[2,0],
+            self.df.loc[:, rd_pts_start:rd_pts_end] == fantasy_pts_df.iloc[3,0],
+            self.df.loc[:, rd_pts_start:rd_pts_end] == fantasy_pts_df.iloc[4,0]
+        ]
+        f_cols = self.get_rd_cols("f_pts_")
+        self.df[f_cols] = np.select(fantasy_points_conditions, fantasy_pts_df["points"])
+        self.df["fantasy_hole_score_pts"] = self.df[f_cols].sum(axis=1)
+    
 
 
 if __name__ == "__main__":
