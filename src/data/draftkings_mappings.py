@@ -359,7 +359,8 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
 
     f_mapper.position_rank()
 
-    
+    f_mapper.set_placing()
+
     # tournament_position_rank(historical_data_df)
 
     # handle_placing_ties(historical_data_df)
@@ -399,6 +400,7 @@ class FantasyMapper():
         self.df["made_cut"] = cut_mask
 
     def handle_place_ties(self):
+        """Handle position ties for winners of tournaments"""
 
         winners = self.df[self.df["place"]==1].copy()
         df_ties = winners[winners.tournament_id.duplicated(keep=False)].reset_index()
@@ -409,6 +411,7 @@ class FantasyMapper():
         self.df["place"] = self.df.groupby("tournament_id")["total"].rank("min")
 
     def position_rank(self):
+        """Final position placing for tournament participants"""
 
         col_start = self.df.columns.get_loc("round_1_1")
         col_end = self.df.columns.get_loc("round_4_18") + 1
@@ -417,27 +420,120 @@ class FantasyMapper():
 
         self.df["total"] = np.where(self.df.made_cut, self.df[score_cols].sum(axis=1), np.nan)
         self.df["place"] = self.df.groupby("tournament_id")["total"].rank("min")
-        # print(self.df.head())
+        
         self.handle_place_ties()
 
+    def get_place_pts(self):
+        """Points given  to tournament participants for finishing position 
+        
+        Returns:
+            place_df (pd.Dataframe) : point mapping for placed finished in tournament
+        """
+        place_dict = {}
+        for place in range(1,51):
+            if place == 1:
+                place_dict[place] = 30
+            elif place == 2:
+                place_dict[place] = 20
+            elif place == 3:
+                place_dict[place] = 18
+            elif place == 4:
+                place_dict[place] = 16
+            elif place == 5:
+                place_dict[place] = 14
+            elif place == 6:
+                place_dict[place] = 12
+            elif place == 7:
+                place_dict[place] = 10
+            elif place == 8:
+                place_dict[place] = 9
+            elif place == 9:
+                place_dict[place] = 8
+            elif place == 10:
+                place_dict[place] = 7
+            elif place > 10 and place <= 15:
+                place_dict[place] = 6
+            elif place > 15 and place <= 20:
+                place_dict[place] = 5
+            elif place > 20 and place <= 25:
+                place_dict[place] = 4
+            elif place > 25 and place <= 30:
+                place_dict[place] = 3
+            elif place > 30 and place <= 40:
+                place_dict[place] = 2
+            elif place > 40 and place <= 50:
+                place_dict[place] = 1
+            else:
+                continue
 
-# def handle_placing_ties(df):
-#     """Handle position ties for winners of tournaments
+        place_df = pd.DataFrame(list(place_dict.items()), columns=["place", "place_pts"])
+        return place_df
 
-#     Args:
-#         df (pd.Dataframe) : historical player data
+    def map_placings(self, place_df):
+        """Map position placings, for players, with placing points
 
-#     """
-#     winners = df[df["place"] == 1].copy()
-#     df_ties = winners[winners["tournament_id"].duplicated(keep=False)]
-#     df_ties.reset_index(inplace=True)
+        Args:
+            place_df (pd.Dataframe) : draftkings fantasy position point totals
+        """
+        placing_conditions = [
+            self.df["place"] == place_df["place"][0],
+            self.df["place"] == place_df["place"][1],
+            self.df["place"] == place_df["place"][2],
+            self.df["place"] == place_df["place"][3],
+            self.df["place"] == place_df["place"][4],
+            self.df["place"] == place_df["place"][5],
+            self.df["place"] == place_df["place"][6],
+            self.df["place"] == place_df["place"][7],
+            self.df["place"] == place_df["place"][8],
+            self.df["place"] == place_df["place"][9],
+            self.df["place"] == place_df["place"][10],
+            self.df["place"] == place_df["place"][11],
+            self.df["place"] == place_df["place"][12],
+            self.df["place"] == place_df["place"][13],
+            self.df["place"] == place_df["place"][14],
+            self.df["place"] == place_df["place"][15],
+            self.df["place"] == place_df["place"][16],
+            self.df["place"] == place_df["place"][17],
+            self.df["place"] == place_df["place"][18],
+            self.df["place"] == place_df["place"][19],
+            self.df["place"] == place_df["place"][20],
+            self.df["place"] == place_df["place"][21],
+            self.df["place"] == place_df["place"][22],
+            self.df["place"] == place_df["place"][23],
+            self.df["place"] == place_df["place"][24],
+            self.df["place"] == place_df["place"][25],
+            self.df["place"] == place_df["place"][26],
+            self.df["place"] == place_df["place"][27],
+            self.df["place"] == place_df["place"][28],
+            self.df["place"] == place_df["place"][29],
+            self.df["place"] == place_df["place"][30],
+            self.df["place"] == place_df["place"][31],
+            self.df["place"] == place_df["place"][32],
+            self.df["place"] == place_df["place"][33],
+            self.df["place"] == place_df["place"][34],
+            self.df["place"] == place_df["place"][35],
+            self.df["place"] == place_df["place"][36],
+            self.df["place"] == place_df["place"][37],
+            self.df["place"] == place_df["place"][38],
+            self.df["place"] == place_df["place"][39],
+            self.df["place"] == place_df["place"][40],
+            self.df["place"] == place_df["place"][41],
+            self.df["place"] == place_df["place"][42],
+            self.df["place"] == place_df["place"][43],
+            self.df["place"] == place_df["place"][44],
+            self.df["place"] == place_df["place"][45],
+            self.df["place"] == place_df["place"][46],
+            self.df["place"] == place_df["place"][47],
+            self.df["place"] == place_df["place"][48],
+            self.df["place"] == place_df["place"][49],
+            ]
+        self.df["fantasy_placing_pts"] = np.select(placing_conditions, place_df["place_pts"])
 
-#     playoff_winners = df_ties.groupby("tournament_id").first()
-#     new_totals = playoff_winners[["index", "total"]].reset_index(drop=True)
+    def set_placing(self):
+        """Set placing points for players"""
 
-#     df["total"].iloc[new_totals["index"].values] = df["total"].iloc[new_totals["index"].values].apply(lambda x: x-1) 
-#     # Redo place col
-#     df["place"] = df.groupby("tournament_id")["total"].rank("min")
+        p_df = self.get_place_pts()
+        self.map_placings(p_df)
 
 
 if __name__ == "__main__":
