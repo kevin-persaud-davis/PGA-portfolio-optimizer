@@ -357,7 +357,7 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     f_mapper = FantasyMapper(historical_df, tournament_ids)
     f_mapper.set_cut()
 
-    f_mapper.position_rank()
+    f_mapper.set_position_rank()
 
     f_mapper.set_placing()
 
@@ -412,7 +412,7 @@ class FantasyMapper():
         self.df["total"].iloc[new_totals["index"].values] = self.df["total"].iloc[new_totals["index"].values].apply(lambda x: x-1)
         self.df["place"] = self.df.groupby("tournament_id")["total"].rank("min")
 
-    def position_rank(self):
+    def set_position_rank(self):
         """Final position placing for tournament participants"""
 
         col_start = self.df.columns.get_loc("round_1_1")
