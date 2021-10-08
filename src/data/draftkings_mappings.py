@@ -362,6 +362,10 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     f_mapper.set_placing()
 
     f_mapper.set_hole_points()
+
+    f_mapper.set_rounds_finished()
+
+    print(f_mapper.get_data())
     
     # tournament_position_rank(historical_data_df)
 
@@ -572,6 +576,13 @@ class FantasyMapper():
         self.df[f_cols] = np.select(fantasy_points_conditions, fantasy_pts_df["points"])
         self.df["fantasy_hole_score_pts"] = self.df[f_cols].sum(axis=1)
     
+    def set_rounds_finished(self):
+        """Indicate each round a player finished (i.e. all 18 holes)"""
+        self.df["complete_r1"] = np.where(self.df.round_1_18 > 0, 1, 0)
+        self.df["complete_r2"] = np.where(self.df.round_2_18 > 0, 1, 0)
+        self.df["complete_r3"] = np.where(self.df.round_3_18 > 0, 1, 0)
+        self.df["complete_r4"] = np.where(self.df.round_4_18 > 0, 1, 0)
+
 
 
 if __name__ == "__main__":
