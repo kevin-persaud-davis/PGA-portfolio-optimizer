@@ -601,6 +601,33 @@ class FantasyMapper():
 
         self.df["fantasy_bogeyfree_pts"] = (self.df.loc[:, "bf1":"bf4"]==0).astype(int).sum(axis=1) * 3
         
+    def find_birdie_streak(self):
+        """Find three consecutive birdies on player scorecard"""
+        np_df = self.df.to_numpy()
+        rc = 0
+        b_seq = [3,3,3]
+        birdie_streak = []
+        for player in np_df:
+            x = find_subsequence(player, b_seq)
+            if x.size > 0:
+                birdie_streak.append(3)
+            else:
+                birdie_streak.append(0)
+        return birdie_streak
+
+    def set_birdie_streak(self):
+        """Create biridie streak fantasy point columns"""
+        f1_df = self.df.filter(like="f_pts_1_")
+        f2_df = self.df.filter(like="f_pts_2_")
+        f3_df = self.df.filter(like="f_pts_3_")
+        f4_df = self.df.filter(like="f_pts_4_")
+
+        self.df["birdie_streak_r1"] = birdie_streak(f1_df)
+        self.df["birdie_streak_r2"] = birdie_streak(f2_df)
+        self.df["birdie_streak_r3"] = birdie_streak(f3_df)
+        self.df["birdie_streak_r4"] = birdie_streak(f4_df)
+
+        self.df["fantasy_birdie_streak_pts"] = self.df.loc[:,"birdie_streak_r1":"birdie_streak_r4"].sum(axis=1)
 
 
 
