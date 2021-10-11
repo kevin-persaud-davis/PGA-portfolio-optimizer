@@ -366,6 +366,9 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     f_mapper.set_rounds_finished()
 
     f_mapper.set_bogey_free()
+    f_mapper.set_birdie_streak()
+
+    f_mapper.set_hole_in_one()
     # print(f_mapper.get_data())
     
     # tournament_position_rank(historical_data_df)
@@ -628,6 +631,13 @@ class FantasyMapper():
         self.df["birdie_streak_r4"] = birdie_streak(f4_df)
 
         self.df["fantasy_birdie_streak_pts"] = self.df.loc[:,"birdie_streak_r1":"birdie_streak_r4"].sum(axis=1)
+
+    def set_hole_in_one(self):
+        """Create hole in one fantasy point column
+
+        Notes: Gives 5 points per hole in one to player
+        """
+        self.df["fantasy_hole_in_one_pts"] = self.df.loc[:, "round_1_1":"round_4_18"].isin([1]).sum(axis=1) * 5
 
 
 
