@@ -639,7 +639,44 @@ class FantasyMapper():
         """
         self.df["fantasy_hole_in_one_pts"] = self.df.loc[:, "round_1_1":"round_4_18"].isin([1]).sum(axis=1) * 5
 
+    def set_under70(self):
+        """Create under 70 fantasy point column
 
+        Note:
+            5 point fantasy bonus for player with all four completed (full 18 holes) rounds under 70
+        """
+        rd1_df = self.df.filter(like="rd_1")
+        rd2_df = self.df.filter(like="rd_2")
+        rd3_df = self.df.filter(like="rd_3")
+        rd4_df = self.df.filter(like="rd_4")
+
+        self.df["rd_total_1"] = np.where(self.df.complete_r1, rd1_df.sum(axis=1), np.nan)
+        self.df["rd_total_2"] = np.where(self.df.complete_r2, rd2_df.sum(axis=1), np.nan)
+        self.df["rd_total_3"] = np.where(self.df.complete_r3, rd3_df.sum(axis=1), np.nan)
+        self.df["rd_total_4"] = np.where(self.df.complete_r4, rd4_df.sum(axis=1), np.nan)
+
+        total_1 = self.df["rd_total_1"] < 70
+        total_2 = self.df["rd_total_2"] < 70
+        total_3 = self.df["rd_total_3"] < 70
+        total_4 = self.df["rd_total_4"] < 70
+
+        self.df["under70_1"] = np.where(total_1, 1, 0)
+        self.df["under70_2"] = np.where(total_2, 1, 0)
+        self.df["under70_3"] = np.where(total_3, 1, 0)
+        self.df["under70_4"] = np.where(total_4, 1, 0)
+
+        self.df["fantasy_under70_pts"] = np.where(self.df.loc[:,"under70_1":"under70_2"].sum(axis=1) == 4, 5, 0)
+
+
+
+# def total_fantasy_points(df):
+#     """Calculate total fantasy points over course of tournament
+
+#     Args:
+#         df (pd.Dataframe) : historical player data
+#     """
+#     f_cols = [col for col in df.columns.tolist() if col.find("fantasy_") != -1]
+#     df["fantasy_total_points"] = df[f_cols].sum(axis=1)
 
 if __name__ == "__main__":
 
