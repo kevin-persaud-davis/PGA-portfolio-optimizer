@@ -365,7 +365,8 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
 
     f_mapper.set_rounds_finished()
 
-    print(f_mapper.get_data())
+    f_mapper.set_bogey_free()
+    # print(f_mapper.get_data())
     
     # tournament_position_rank(historical_data_df)
 
@@ -582,6 +583,24 @@ class FantasyMapper():
         self.df["complete_r2"] = np.where(self.df.round_2_18 > 0, 1, 0)
         self.df["complete_r3"] = np.where(self.df.round_3_18 > 0, 1, 0)
         self.df["complete_r4"] = np.where(self.df.round_4_18 > 0, 1, 0)
+
+    def set_bogey_free(self):
+        """Create bogeyfree round fantasy point column
+    
+        Note: Add 3 points per bogey free round in tournament
+        """
+        bogey_rd1 = self.df.filter(like="f_pts_1_") < 0
+        bogey_rd2 = self.df.filter(like="f_pts_2_") < 0
+        bogey_rd3 = self.df.filter(like="f_pts_3_") < 0
+        bogey_rd4 = self.df.filter(like="f_pts_4_") < 0
+
+        self.df["bf1"] = np.where(self.df.complete_r1, bogey_rd1.sum(axis=1), np.nan)
+        self.df["bf2"] = np.where(self.df.complete_r2, bogey_rd2.sum(axis=1), np.nan)
+        self.df["bf3"] = np.where(self.df.complete_r3, bogey_rd3.sum(axis=1), np.nan)
+        self.df["bf4"] = np.where(self.df.complete_r4, bogey_rd4.sum(axis=1), np.nan)
+
+        self.df["fantasy_bogeyfree_pts"] = (self.df.loc[:, "bf1":"bf4"]==0).astype(int).sum(axis=1) * 3
+        
 
 
 
