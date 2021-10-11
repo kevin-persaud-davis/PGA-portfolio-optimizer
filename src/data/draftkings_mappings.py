@@ -369,7 +369,9 @@ def fantasy_map_runner(start, end, w_fpath="historical"):
     f_mapper.set_birdie_streak()
 
     f_mapper.set_hole_in_one()
-    # print(f_mapper.get_data())
+    f_mapper.set_under70()
+
+    f_mapper.set_total_points()
     
     # tournament_position_rank(historical_data_df)
 
@@ -667,6 +669,10 @@ class FantasyMapper():
 
         self.df["fantasy_under70_pts"] = np.where(self.df.loc[:,"under70_1":"under70_2"].sum(axis=1) == 4, 5, 0)
 
+    def set_total_points(self):
+        """Calculate total fantasy points over course of tournament"""
+
+        self.df["fantasy_total_points"] = self.df.filter(like="fantasy_").sum(axis=1)
 
 
 # def total_fantasy_points(df):
@@ -676,7 +682,7 @@ class FantasyMapper():
 #         df (pd.Dataframe) : historical player data
 #     """
 #     f_cols = [col for col in df.columns.tolist() if col.find("fantasy_") != -1]
-#     df["fantasy_total_points"] = df[f_cols].sum(axis=1)
+
 
 if __name__ == "__main__":
 
