@@ -674,14 +674,18 @@ class FantasyMapper():
 
         self.df["fantasy_total_points"] = self.df.filter(like="fantasy_").sum(axis=1)
 
-
-# def total_fantasy_points(df):
-#     """Calculate total fantasy points over course of tournament
-
-#     Args:
-#         df (pd.Dataframe) : historical player data
-#     """
-#     f_cols = [col for col in df.columns.tolist() if col.find("fantasy_") != -1]
+    def run_all_transformations(self):
+        """run all fantasy transformations on df"""
+        self.set_cut()
+        self.set_position_rank()
+        self.set_placing()
+        self.set_hole_points()
+        self.set_rounds_finished()
+        self.set_bogey_free()
+        self.set_birdie_streak()
+        self.set_hole_in_one()
+        self.set_under70()
+        self.set_total_points()
 
 
 if __name__ == "__main__":
