@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
-def espn_runner():
+def espn_player_ids():
     """Get all player id's from espn player's page
     
 
@@ -45,7 +45,7 @@ def espn_runner():
             print("Could not access page")
 
 def main():
-    espn_runner()
+    espn_player_ids()
 
 if __name__ == "__main__":
     main()
