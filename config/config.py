@@ -25,6 +25,7 @@ PGA_SEASON_2013 = Path(RAW_HISTORICAL_DIR, "season_2013")
 PGA_SEASON_2012 = Path(RAW_HISTORICAL_DIR, "season_2012")
 PGA_SEASON_2011 = Path(RAW_HISTORICAL_DIR, "season_2011")
 RAW_PGA_METRICS_DIR = Path(RAW_DATA_DIR, "pgatour_metrics_data")
+RAW_PLAYER_ID_DIR = Path(RAW_DATA_DIR, "player_ids")
 
 
 PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
