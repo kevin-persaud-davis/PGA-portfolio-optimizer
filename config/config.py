@@ -13,6 +13,7 @@ MODEL_DIR = Path(PGA_DIR, "model")
 DATA_DIR = Path(PGA_DIR, "data")
 
 RAW_DATA_DIR = Path(DATA_DIR, "raw")
+RAW_HISTORICAL = Path(RAW_DATA_DIR, "historical")
 RAW_TOURNAMENTS_DIR = Path(RAW_DATA_DIR, "tournaments")
 RAW_HISTORICAL_DIR = Path(RAW_DATA_DIR, "historical_player_data")
 RAW_HISTORICAL_PRICES = Path(RAW_DATA_DIR, "historical_prices")
@@ -27,7 +28,7 @@ RAW_PGA_METRICS_DIR = Path(RAW_DATA_DIR, "pgatour_metrics_data")
 
 
 PROCESSED_DATA_DIR = Path(DATA_DIR, "processed")
-
+PROCESSED_HISTORICAL = Path(PROCESSED_DATA_DIR, "historical")
 TOURNAMENTS_DIR = Path(PROCESSED_DATA_DIR, "tournaments")
 MAPPED_TOURNAMENTS_DIR = Path(TOURNAMENTS_DIR, "mapped_tournaments")
 PROCESSED_HISTORICAL_DIR = Path(PROCESSED_DATA_DIR, "historical_player_data")
