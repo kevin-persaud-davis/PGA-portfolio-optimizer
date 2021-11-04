@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import re
 import sys
 sys.path.append("c:\\Users\\kpdav\\machine_learning\\projects\\PGA-portfolio-optimizer\\config")
@@ -38,14 +39,35 @@ def espn_player_ids():
                     p_name = p_link[p_link.rfind("/")+1:]
                     p_name = p_name.replace("-", " ")
 
-                    player_id_dict[int(p_id)] = p_name
+                    player_id_dict[int(p_id)] = [p_name]
 
             return player_id_dict
         else:
             print("Could not access page")
 
+def save_data(data, filename):
+    """Save data to disk
+    
+    Args:
+        
+        data (dict)
+
+        filename(str)
+        
+    """
+    
+    df = pd.DataFrame.from_dict(data, orient="index").reset_index()
+    df = df.rename(columns={"index":"player_id", 0:"player_name"})
+    f_path = str(Path(config.RAW_PLAYER_ID_DIR, filename))
+    
+    df.to_csv(f_path)
+
+
 def main():
-    espn_player_ids()
+    
+    espn_pids = espn_player_ids()
+    save_data(espn_pids, "espn_player_ids.csv")
+
 
 if __name__ == "__main__":
     main()
