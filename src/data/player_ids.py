@@ -60,7 +60,7 @@ def save_data(data, filename):
     df = df.rename(columns={"index":"player_id", 0:"player_name"})
     f_path = str(Path(config.RAW_PLAYER_ID_DIR, filename))
     
-    df.to_csv(f_path)
+    df.to_csv(f_path, index=False)
 
 
 def main():
