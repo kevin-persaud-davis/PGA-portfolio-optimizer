@@ -89,12 +89,24 @@ RTP_SCORE:
 
 
 
+def gir_dist_pct_clean(df, col):
+    
+    df[col] = df[col].str.replace("E", "0.0")
+    df[col] = pd.to_numeric(df[col], downcast="float")
 
+    return df
 
 
 
 def main():
-    pass
+
+    metric_path = str(Path(config.RAW_PGA_METRICS_DIR, "077_2017_2020.csv"))
+
+    pga_077_df = pd.read_csv(metric_path)
+
+    pga_077_df = gir_dist_pct_clean(pga_077_df, "RELATIVE_TO_PAR")
+
+    print(pga_077_df.dtypes)
 
 if __name__ == "__main__":
     main()
